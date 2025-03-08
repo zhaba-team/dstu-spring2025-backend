@@ -1,0 +1,75 @@
+services:
+    db:
+        container_name: db.${APP_NAMESPACE}
+        image: postgres:17
+        environment:
+            POSTGRES_USER: '${DB_USERNAME}'
+            POSTGRES_PASSWORD: '${DB_PASSWORD}'
+            POSTGRES_DB: '${DB_DATABASE}'
+            PGDATA: '/var/lib/postgresql/data/pgdata'
+        volumes:
+            - pg_data:/var/lib/postgresql/data
+        ports:
+            - '${DB_PORT}:5432'
+        networks:
+            - app
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits:
+                    cpus: '1'
+                    memory: 4G
+    php:
+        build:
+            context: .
+            dockerfile: .docker/php/Dockerfile
+        container_name: php.${APP_NAMESPACE}
+        ports:
+            - "80:8000"
+            - "443:443"
+            - "443:443/udp"
+        volumes:
+            - .:/app
+        depends_on:
+            redis:
+                condition: service_healthy
+            db:
+                condition: service_healthy
+        networks:
+            - app
+    redis:
+        restart: unless-stopped
+        container_name: redis.${APP_NAMESPACE}
+        image: redis:7.4.0
+        volumes:
+            - redis_data:/data
+        ports:
+            - '${REDIS_PORT:-}:6379'
+        networks:
+            - app
+        healthcheck:
+            test: [ "CMD", "redis-cli", "ping" ]
+            interval: 1s
+            timeout: 3s
+            retries: 30
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+
+volumes:
+    caddy_data:
+    caddy_config:
+    pg_data:
+    redis_data:
+
+networks:
+    app:
+        driver: bridge
