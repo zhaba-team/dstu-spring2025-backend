@@ -8,3 +8,4 @@
 - [Почта](email.md)
 - [Хранилище](storage.md)
 - [Работа с файлами](files.md)
+- [Github Actions](workflow.md)

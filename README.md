@@ -12,7 +12,7 @@
 * frankenphp
 * php 8.4^
 * docker
-* ...
+* horizon
 
 
 
