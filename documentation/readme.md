@@ -9,3 +9,6 @@
 - [Хранилище](storage.md)
 - [Работа с файлами](files.md)
 - [Github Actions](workflow.md)
+- [Api platform](api_platform.md)
+- [Очереди](horizon.md)
+- [Авторизация](auth.md)
