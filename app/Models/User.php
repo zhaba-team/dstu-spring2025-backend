@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use ApiPlatform\Metadata\ApiResource;
 use App\Builders\UserBuilder;
 use App\Enums\UserRole;
 use Database\Factories\UserFactory;
@@ -10,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[ApiResource]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */

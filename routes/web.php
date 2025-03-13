@@ -3,8 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+require __DIR__.'/api.php';
+require __DIR__.'/auth.php';
+
+Route::get('/', static function () {
     return view('welcome');
 });
-
-require __DIR__.'/auth.php';
