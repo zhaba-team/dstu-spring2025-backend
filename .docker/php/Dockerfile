@@ -34,10 +34,6 @@ COPY . .
 COPY ./.docker/php/php.ini /usr/local/etc/php/
 COPY ./.docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN pecl install xdebug
-
-RUN docker-php-ext-enable xdebug
-
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 CMD ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/conf.d/supervisord.conf"]
