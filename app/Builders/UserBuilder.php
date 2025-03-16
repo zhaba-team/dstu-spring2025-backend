@@ -1,14 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Builders;
 
-use App\Enums\UserRole;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 
+/** @extends Builder<User> */
 class UserBuilder extends Builder
 {
-    public function isDeveloper()
+    public function hasRole(string $role): bool
     {
-        $this->where('role', UserRole::Developer);
+        return $this->where('role', $role)->exists();
     }
 }

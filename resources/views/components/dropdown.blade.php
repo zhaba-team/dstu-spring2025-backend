@@ -1,3 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+?>
 @props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700'])
 
 @php
@@ -33,3 +38,4 @@ $width = match ($width) {
         </div>
     </div>
 </div>
+<?php 

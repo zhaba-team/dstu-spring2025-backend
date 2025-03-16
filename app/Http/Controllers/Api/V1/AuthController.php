@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Validation\ValidationException;
@@ -32,6 +34,6 @@ class AuthController
     /** @return array<string, string> */
     public function logout(): array
     {
-       return $this->authService->logout();
+        return $this->authService->logout();
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
-use App\Enums\UserRole;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Horizon\Horizon;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
@@ -15,10 +15,6 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     public function boot(): void
     {
         parent::boot();
-
-        Horizon::auth(static function () {
-            return auth()->user()->role === UserRole::Developer;
-        });
     }
 
     /**
@@ -28,7 +24,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      */
     protected function gate(): void
     {
-        Gate::define('viewHorizon', static function ($user) {
+        Gate::define('viewHorizon', static function ($user): bool {
             return in_array($user->email, []);
         });
     }

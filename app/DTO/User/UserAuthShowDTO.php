@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DTO\User;
 
 use App\Models\User;
@@ -10,7 +12,7 @@ class UserAuthShowDTO extends Data
     public function __construct(
         public User $user,
         public string $token,
-    ){
+    ) {
     }
 
     public static function fromModel(User $user): self

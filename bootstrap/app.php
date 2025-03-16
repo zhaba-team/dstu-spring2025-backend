@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Role;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health:   '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->alias([
+            'role' => Role::class
+        ]);
         $middleware->validateCsrfTokens(['api/*']);
         $middleware->trustProxies(at: ['127.0.0.1', '192.168.65.1/16', '92.63.102.181']);
     })

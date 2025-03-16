@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Middleware\IsDeveloper;
+declare(strict_types=1);
+
+use App\Http\Middleware\Role;
 use Illuminate\Support\Str;
 
 return [
@@ -71,7 +73,7 @@ return [
     |
     */
 
-    'middleware' => ['web', IsDeveloper::class],
+    'middleware' => ['web', 'role:developer'],
 
     /*
     |--------------------------------------------------------------------------

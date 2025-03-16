@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum UserRole: string
@@ -10,7 +12,7 @@ enum UserRole: string
 
     public function displayName(): string
     {
-        return match($this) {
+        return match ($this) {
             self::Developer => 'Разработчик',
             self::Admin => 'Администратор',
             self::User => 'Пользователь',
