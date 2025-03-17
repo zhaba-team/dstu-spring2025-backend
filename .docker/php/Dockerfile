@@ -1,8 +1,6 @@
 FROM node:latest AS node
 FROM dunglas/frankenphp:1.4
 
-ENV SERVER_NAME="http://"
-
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     git \
@@ -33,7 +31,6 @@ COPY . .
 
 COPY ./.docker/php/php.ini /usr/local/etc/php/
 COPY ./.docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./.docker/supervisor/supervisord.prod.conf /etc/supervisor/conf.d/supervisord.prod.conf
 
 RUN chown -R www-data:www-data storage bootstrap/cache
-
-CMD ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/conf.d/supervisord.conf"]

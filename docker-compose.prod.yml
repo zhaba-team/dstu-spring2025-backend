@@ -1,0 +1,3 @@
+services:
+  php:
+    command: ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.prod.conf"]
