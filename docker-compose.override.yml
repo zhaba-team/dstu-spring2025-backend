@@ -1,6 +1,11 @@
 services:
   php:
-    command: ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      target: dev
+    volumes:
+      - .:/app
 
   mailhog:
     image: mailhog/mailhog:latest

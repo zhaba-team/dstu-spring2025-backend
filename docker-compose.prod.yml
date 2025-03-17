@@ -1,3 +1,8 @@
 services:
   php:
-    command: ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.prod.conf"]
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      target: prod
+    volumes:
+      - .:/app
