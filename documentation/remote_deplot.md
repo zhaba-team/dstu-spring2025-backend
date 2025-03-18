@@ -1,3 +1,4 @@
+установить сертификаты - https://certbot.eff.org/instructions?ws=other&os=snap
 скопировать cp .env.example .env
 
 заменить параметры 
