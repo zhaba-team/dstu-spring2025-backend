@@ -5,6 +5,8 @@ services:
       dockerfile: .docker/php/Dockerfile
       target: dev
     volumes:
+      - caddy_data:/data
+      - caddy_config:/config
       - .:/app
 
   mailhog:

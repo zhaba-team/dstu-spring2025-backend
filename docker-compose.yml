@@ -35,6 +35,8 @@ services:
             - "443:443"
             - "443:443/udp"
         volumes:
+            - caddy_data:/data
+            - caddy_config:/config
             - .:/app
         depends_on:
             redis:
