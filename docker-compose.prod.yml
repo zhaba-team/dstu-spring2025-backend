@@ -5,7 +5,5 @@ services:
       dockerfile: .docker/php/Dockerfile
       target: prod
     volumes:
-      - caddy_data:/data
-      - caddy_config:/config
       - .:/app
 

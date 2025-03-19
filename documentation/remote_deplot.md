@@ -1,4 +1,3 @@
-установить сертификаты - https://certbot.eff.org/instructions?ws=other&os=snap
 скопировать cp .env.example .env
 
 заменить параметры 
@@ -57,10 +56,5 @@ $user->fill([
 'email' => 'your_mail@gmail.com',
 ])->save();
 
-опустите продовский вариант и подымыти дев окружение
+https://www.youtube.com/watch?v=d8NiAbqb6aI
 
-внутри контейнера пропишите 
-
-npm ci 
-
-npm run build
