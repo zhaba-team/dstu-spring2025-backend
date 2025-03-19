@@ -31,7 +31,7 @@ services:
             dockerfile: .docker/php/Dockerfile
         container_name: php.${APP_NAMESPACE}
         ports:
-            - "80:8000"
+            - "8000:8000"
             - "443:443"
             - "443:443/udp"
         volumes:
