@@ -32,8 +32,6 @@ services:
         container_name: php.${APP_NAMESPACE}
         ports:
             - "8000:8000"
-            - "443:443"
-            - "443:443/udp"
         volumes:
             - caddy_data:/data
             - caddy_config:/config
