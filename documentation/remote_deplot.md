@@ -9,7 +9,7 @@ APP_KEY=base64:16/qPxkRHQKV2PP0DaUtTrzys589KXOLAMoMwuheNdY=
 APP_DEBUG=true
 APP_URL=http://localhost
 
-SERVER_NAME=http://localhost
+SERVER_NAME=http://localhost - домен указать
 
 APP_NAMESPACE=templ
 
