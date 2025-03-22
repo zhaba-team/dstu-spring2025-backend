@@ -42,6 +42,4 @@ FROM base AS prod
 
 COPY ./.docker/supervisor/supervisord.prod.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD ["npm", "ci"]
-CMD ["npm", "run", "build"]
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
