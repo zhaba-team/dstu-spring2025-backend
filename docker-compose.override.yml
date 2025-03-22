@@ -1,4 +1,19 @@
 services:
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik.${APP_NAMESPACE}
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app
+
   php:
     build:
       context: .
@@ -6,6 +21,10 @@ services:
       target: dev
     volumes:
       - .:/app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${APP_NAMESPACE}.rule=Host(`${APP_HOST:-localhost}`)"
+      - "traefik.http.services.${APP_NAMESPACE}.loadbalancer.server.port=${APP_PORT:-8000}"
 
   mailhog:
     image: mailhog/mailhog:latest
