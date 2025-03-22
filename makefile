@@ -1,5 +1,7 @@
 include .env
 
+update-project: pull composer-install db-migrate build-front build-prod
+
 build:
 	@echo "Building containers"
 	@docker compose --env-file .env up -d --build
@@ -33,3 +35,16 @@ rector-fix:
 code-baseline:
 	@echo "Perform phpstan generate-baseline"
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G
+composer-install:
+	@echo "Running composer install"
+	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE) composer install
+db-migrate:
+	@echo "Running database migrations"
+	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE) php artisan migrate --force
+build-front:
+	@echo "Building admin frontend for production"
+	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE) npm ci --production=false
+	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE) npm run build
+pull:
+	@echo "Updating project from git and rebuild"
+	@git pull origin master
