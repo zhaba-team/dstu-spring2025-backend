@@ -1,13 +1,10 @@
-name: DEPLOY
-on:
-  push:
-    branches:
-      - main
+name: CI-BUILD-TEST
+on: [ push, pull_request ]
+
 jobs:
   coding-standard:
     name: Coding Standard
     runs-on: ubuntu-latest
-    environment: deniskorbakov
     steps:
       - uses: actions/checkout@v2
 
