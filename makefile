@@ -1,10 +1,17 @@
 include .env
 
+# набор команд для обновление проекта в продакшене
 update-project: pull composer-install db-migrate build-front rm-images build-prod
+
+# набор команд для инициализации проекта локально
+init: composer-install build-front key-generate storage-link seed build
+
+# набор команд для инициализации проекта на проде
+init-prod: composer-install build-front key-generate storage-link seed build-prod
 
 build:
 	@echo "Building containers"
-	@docker compose --env-file .env up -d --build
+	@docker compose --env-file .env up -d --build --wait
 up:
 	@echo "Starting containers"
 	@docker compose --env-file .env up -d --remove-orphans
@@ -45,3 +52,15 @@ pull:
 rm-images:
 	@echo "Delete extra images"
 	@docker system prune -f
+key-generate:
+	@echo "Key generate"
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan key:generate
+storage-link:
+	@echo "Storage Link"
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan storage:link
+seed:
+	@echo "Db Seed"
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan db:seed
+
+
+

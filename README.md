@@ -4,16 +4,22 @@
 
 ## Описание шаблона
 
-### Для чего шаблон:
+Данный шаблон содержит в себе готовую среду для разработки laravel + frankenphp + docker
+
+Так же реализована аторизация - регистрация по токену + аунтефикация по разным сервисам
 
 ### Технологии:
 
 * laravel 12
-* frankenphp
+* frankenphp + laravel/octane
 * php 8.4^
 * docker
 * horizon
 * pest
+* rector
+* phpstan
+* php_codesniffer
+* laravel-data
 
 
 
