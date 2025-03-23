@@ -11,9 +11,6 @@ jobs:
     environment: deniskorbakov
     steps:
       - uses: actions/checkout@v4.2.2
-      - name: Debug secrets
-        run: |
-          echo "PROJECT_PATH: ${{ secrets.PROJECT_PATH }}"
       - name: Push to server
         uses: appleboy/ssh-action@master
         with:
