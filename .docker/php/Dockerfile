@@ -1,4 +1,3 @@
-FROM node:23 AS node
 FROM dunglas/frankenphp:1.4 AS base
 
 RUN apt-get update \
@@ -21,16 +20,12 @@ RUN install-php-extensions \
 
 WORKDIR /app
 
-COPY . .
+COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-
-COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node:23 /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node:23 /usr/local/bin/node /usr/local/bin/node
 
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
-
-RUN chown -R www-data:www-data storage bootstrap/cache
 
 FROM base AS dev
 
