@@ -4,10 +4,10 @@ include .env
 update-project: pull composer-install db-migrate build-front rm-images build-prod
 
 # набор команд для инициализации проекта локально
-init: build composer-install build-front key-generate storage-link db-migrate seed restart build-wait
+init: cp-env build composer-install build-front key-generate storage-link db-migrate seed restart build-wait
 
 # набор команд для инициализации проекта на проде
-init-prod: build-prod composer-install build-front key-generate storage-link db-migrate seed restart build-prod
+init-prod: cp-env build-prod composer-install build-front key-generate storage-link db-migrate seed restart build-prod
 
 build:
 	@echo "Building containers"
@@ -67,5 +67,8 @@ seed:
 restart:
 	@echo "restart container"
 	@docker restart php.${APP_NAMESPACE}
+cp-env:
+	@echo "cp env"
+	@cp .env.example .env
 
 
