@@ -1,6 +1,8 @@
-name: CI-BUILD-TEST
-on: [ push, pull_request ]
-
+name: DEPLOY
+on:
+  push:
+    branches:
+      - main
 jobs:
   coding-standard:
     name: Coding Standard
