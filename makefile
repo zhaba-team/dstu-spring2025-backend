@@ -1,6 +1,6 @@
 include .env
 
-update-project: pull composer-install db-migrate build-front build-prod rm-images
+update-project: pull composer-install db-migrate build-front rm-images build-prod
 
 build:
 	@echo "Building containers"
