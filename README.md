@@ -22,7 +22,7 @@
 ### Локальная разработка:
 
 ```bash
-make init
+cp .env.example .env ; make init
 ```
 
 Перейти по [ссылке](http://localhost)
