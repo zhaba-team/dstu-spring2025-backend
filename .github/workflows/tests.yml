@@ -5,6 +5,7 @@ jobs:
   coding-standard:
     name: Coding Standard
     runs-on: ubuntu-latest
+    environment: deniskorbakov
     steps:
       - uses: actions/checkout@v2
 
