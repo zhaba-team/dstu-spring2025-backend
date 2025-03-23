@@ -10,11 +10,6 @@ jobs:
     runs-on: [ ubuntu-latest ]
     steps:
       - uses: actions/checkout@v4.2.2
-        run: |
-          echo ${{secrets.SERVER_IP}} | sed 's/./& /g'
-          echo ${{secrets.SERVER_USERNAME}} | sed 's/./& /g'
-          echo ${{secrets.SERVER_PASSWORD}} | sed 's/./& /g'
-          echo ${{secrets.PROJECT_PATH}} | sed 's/./& /g'
       - name: Push to server
         uses: appleboy/ssh-action@master
         with:
