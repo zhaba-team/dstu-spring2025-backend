@@ -15,8 +15,6 @@ jobs:
           echo "PROJECT_PATH: ${{ secrets.PROJECT_PATH }}"
       - name: Push to server
         uses: appleboy/ssh-action@master
-        env:
-
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
