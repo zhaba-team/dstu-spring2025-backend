@@ -37,14 +37,14 @@ code-baseline:
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G
 composer-install:
 	@echo "Running composer install"
-	@docker exec -t $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install
 db-migrate:
 	@echo "Running database migrations"
-	@docker exec -t $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan migrate --force
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan migrate --force
 build-front:
 	@echo "Building admin frontend for production"
-	@docker exec -t $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm ci --production=false
-	@docker exec -t $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm run build
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm ci --production=false
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm run build
 pull:
 	@echo "Updating project from git and rebuild"
 	@git pull
