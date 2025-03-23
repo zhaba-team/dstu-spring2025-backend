@@ -47,4 +47,4 @@ build-front:
 	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE) npm run build
 pull:
 	@echo "Updating project from git and rebuild"
-	@git pull origin master
+	@git pull
