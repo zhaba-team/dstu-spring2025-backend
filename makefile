@@ -41,7 +41,7 @@ code-baseline:
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G
 composer-install:
 	@echo "Running composer install"
-	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install --ignore-platform-req=ext-intl
 optimize:
 	@echo "Running composer install"
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan optimize
