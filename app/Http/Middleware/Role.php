@@ -19,7 +19,7 @@ class Role
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (! Auth::check()) {
-            return redirect('login');
+            return redirect('/');
         }
 
         $user = Auth::user();
@@ -30,6 +30,6 @@ class Role
             }
         }
 
-        return redirect()->back();
+        return redirect('/');
     }
 }
