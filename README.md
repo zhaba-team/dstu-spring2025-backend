@@ -18,6 +18,7 @@
 * phpstan
 * php_codesniffer
 * laravel-data
+* filament
 
 ### Локальная разработка:
 
