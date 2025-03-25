@@ -7,12 +7,19 @@ namespace App\Models;
 use App\Builders\UserBuilder;
 use App\Enums\UserRole;
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+/**
+ * @property-read int $id
+ * @property string $email
+ * @property UserRole $role
+ */
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory;
@@ -53,6 +60,11 @@ class User extends Authenticatable
             'password'          => 'hashed',
             'role'              => UserRole::class,
         ];
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->role->canFullAccess();
     }
 
     public function newEloquentBuilder($query): UserBuilder

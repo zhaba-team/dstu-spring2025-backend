@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "filament/filament": "^3.3",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.31",
         "laravel/octane": "^2.8",
@@ -45,7 +46,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -63,18 +65,18 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "cs-baseline": [
-          "@php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G"
+            "@php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G"
         ],
         "cs-check": [
-          "@php vendor/bin/phpstan analyse --memory-limit=2G",
-          "phpcs"
+            "@php vendor/bin/phpstan analyse --memory-limit=2G",
+            "phpcs"
         ],
         "cs-fix": "phpcbf",
         "cs-rector": [
-          "@php vendor/bin/rector --dry-run --ansi"
+            "@php vendor/bin/rector --dry-run --ansi"
         ],
         "cs-rector-fix": [
-          "@php vendor/bin/rector"
+            "@php vendor/bin/rector"
         ]
     },
     "extra": {

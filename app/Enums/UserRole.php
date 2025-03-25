@@ -18,4 +18,9 @@ enum UserRole: string
             self::User => 'Пользователь',
         };
     }
+
+    public function canFullAccess(): bool
+    {
+        return $this === self::Developer || $this === self::Admin;
+    }
 }
