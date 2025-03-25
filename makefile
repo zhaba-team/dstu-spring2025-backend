@@ -1,7 +1,7 @@
 include .env
 
 # набор команд для обновление проекта в продакшене
-update-project: pull composer-install db-migrate build-front build-prod
+update-project: pull composer-install db-migrate build-front rm-images build-prod
 
 # набор команд для инициализации проекта локально
 init: build composer-install build-front key-generate storage-link db-migrate seed restart build-wait
@@ -47,7 +47,7 @@ db-migrate:
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan migrate --force
 build-front:
 	@echo "Building admin frontend for production"
-	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm ci --production=false
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm i
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) npm run build
 pull:
 	@echo "Updating project from git and rebuild"
