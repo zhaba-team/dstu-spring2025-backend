@@ -30,6 +30,6 @@ class Role
             }
         }
 
-        return redirect('login');
+        return redirect()->back();
     }
 }
