@@ -1,7 +1,7 @@
 include .env
 
 # набор команд для обновление проекта в продакшене
-update-project: pull composer-install db-migrate build-front optimize optimize-admin rm-images build-prod
+update-project: pull composer-install db-migrate build-front rm-images build-prod
 
 # набор команд для инициализации проекта локально
 init: build composer-install build-front key-generate storage-link db-migrate seed restart build-wait
@@ -42,12 +42,6 @@ code-baseline:
 composer-install:
 	@echo "Running composer install"
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install --ignore-platform-reqs
-optimize:
-	@echo "Running composer install"
-	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan optimize
-optimize-admin:
-	@echo "Running composer install"
-	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan filament:optimize
 db-migrate:
 	@echo "Running database migrations"
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan migrate --force
