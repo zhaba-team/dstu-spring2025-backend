@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Validation\ValidationException;
 use App\Services\Controllers\AuthService;

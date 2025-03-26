@@ -23,4 +23,18 @@ enum UserRole: string
     {
         return $this === self::Developer || $this === self::Admin;
     }
+
+    /** @return array<int, UserRole> */
+    public static function publicRoles(): array
+    {
+        $publicRoles = [];
+
+        foreach (self::cases() as $role) {
+            if ($role !== self::Developer && $role !== self::Admin) {
+                $publicRoles[] = $role;
+            }
+        }
+
+        return $publicRoles;
+    }
 }
