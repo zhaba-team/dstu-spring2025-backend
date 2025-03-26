@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['throttle:limit'])->group(function (): void {
+Route::middleware(['throttle:limit'])->group(static function (): void {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 
@@ -15,7 +15,11 @@ Route::middleware(['throttle:limit'])->group(function (): void {
         Route::get('/roles', [UserController::class, 'roles']);
     });
 
-    Route::middleware(['auth:sanctum'])->group(function (): void {
+    Route::middleware(['auth:sanctum'])->group(static function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
+
+        Route::group(['prefix' => 'users'], static function (): void {
+            Route::post('/{userId}', [UserController::class, 'update'])->middleware('checkUserOwnership');
+        });
     });
 });

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Controllers;
 
+use App\DTO\User\UserUpdateDTO;
 use App\DTO\User\UserShowDTO;
 use App\Enums\UserRole;
 use App\Models\User;
@@ -29,5 +30,13 @@ final class UserService
                 ];
             }, $roles),
         ];
+    }
+
+    /** @return array<string, mixed> */
+    public function update(User $user, UserUpdateDTO $requestDTO): array
+    {
+        $user->update($requestDTO->toArray());
+
+        return UserShowDTO::from($user)->toArray();
     }
 }

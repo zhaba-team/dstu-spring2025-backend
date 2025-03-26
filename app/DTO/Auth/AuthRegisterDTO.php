@@ -14,10 +14,9 @@ use Spatie\LaravelData\Dto;
 class AuthRegisterDTO extends Dto
 {
     public function __construct(
-        #[Max(225)]
+        #[Unique('users'), Max(225)]
         public string $name,
-        #[Email]
-        #[Unique('users', 'email')]
+        #[Unique('users'), Email]
         public string $email,
         public UserRole $role,
         #[Password(min:8)]
