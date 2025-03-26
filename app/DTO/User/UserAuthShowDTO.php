@@ -10,7 +10,7 @@ use Spatie\LaravelData\Data;
 class UserAuthShowDTO extends Data
 {
     public function __construct(
-        public User $user,
+        public UserShowDTO $user,
         public string $token,
     ) {
     }
@@ -18,7 +18,7 @@ class UserAuthShowDTO extends Data
     public static function fromModel(User $user): self
     {
         return new self(
-            $user,
+            UserShowDTO::from($user),
             $user->createToken('auth_token')->plainTextToken
         );
     }
