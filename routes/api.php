@@ -11,6 +11,7 @@ Route::middleware(['throttle:limit'])->group(function (): void {
     Route::post('/login', [AuthController::class, 'login']);
 
     Route::group(['prefix' => 'users'], static function (): void {
+        Route::get('/{id}', [UserController::class, 'show']);
         Route::get('/roles', [UserController::class, 'roles']);
     });
 

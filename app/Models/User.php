@@ -17,6 +17,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @property-read int $id
  * @property string $email
+ * @property string $name
  * @property UserRole $role
  */
 class User extends Authenticatable implements FilamentUser
