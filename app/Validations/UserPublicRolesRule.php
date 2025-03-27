@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Validation;
+namespace App\Validations;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use App\Enums\ApiErrorCode;

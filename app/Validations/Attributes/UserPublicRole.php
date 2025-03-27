@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Validation\Attributes;
+namespace App\Validations\Attributes;
 
 use Attribute;
-use App\Validation\UserPublicRolesRule;
+use App\Validations\UserPublicRolesRule;
 use Spatie\LaravelData\Attributes\Validation\CustomValidationAttribute;
 use Spatie\LaravelData\Support\Validation\ValidationPath;
 

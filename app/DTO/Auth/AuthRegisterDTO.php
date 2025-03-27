@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\DTO\Auth;
 
 use App\Enums\UserRole;
-use App\Validation\Attributes\UserPublicRole;
+use App\Validations\Attributes\UserPublicRole;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Password;
