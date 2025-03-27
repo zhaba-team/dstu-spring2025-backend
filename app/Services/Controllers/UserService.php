@@ -8,9 +8,15 @@ use App\DTO\User\UserUpdateDTO;
 use App\DTO\User\UserShowDTO;
 use App\Enums\UserRole;
 use App\Models\User;
+use App\Services\Files\RequestFileStorage;
 
 final class UserService
 {
+    public function __construct(
+        public RequestFileStorage $requestFileStorage,
+    ) {
+    }
+
     /** @return array<string, mixed> */
     public function show(User $user): array
     {
@@ -35,7 +41,17 @@ final class UserService
     /** @return array<string, mixed> */
     public function update(User $user, UserUpdateDTO $requestDTO): array
     {
-        $user->update($requestDTO->toArray());
+        $savedAvatar = null;
+
+        if (isset($requestDTO->avatar)) {
+            $savedAvatar = $this->requestFileStorage->saveFile($requestDTO->avatar);
+        }
+
+        $user->name = $requestDTO->name;
+        $user->email = $requestDTO->email;
+        $user->avatar_id = $savedAvatar?->id;
+
+        $user->save();
 
         return UserShowDTO::from($user)->toArray();
     }

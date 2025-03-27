@@ -15,6 +15,7 @@ class UserShowDTO extends Data
         public string $name,
         public string $email,
         public UserRole $role,
+        public ?string $avatar,
     ) {
     }
 
@@ -25,6 +26,7 @@ class UserShowDTO extends Data
             $user->name,
             $user->email,
             $user->role,
+            $user->avatar?->url
         );
     }
 }

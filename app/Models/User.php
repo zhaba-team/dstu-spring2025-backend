@@ -10,6 +10,7 @@ use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -18,7 +19,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read int $id
  * @property string $email
  * @property string $name
+ * @property ?int $avatar_id
  * @property UserRole $role
+ * @property ?File $avatar
  */
 class User extends Authenticatable implements FilamentUser
 {
@@ -33,6 +36,7 @@ class User extends Authenticatable implements FilamentUser
      * @var list<string>
      */
     protected $fillable = [
+        'avatar_id',
         'name',
         'email',
         'password',
@@ -61,6 +65,12 @@ class User extends Authenticatable implements FilamentUser
             'password'          => 'hashed',
             'role'              => UserRole::class,
         ];
+    }
+
+    /** @return BelongsTo<File, $this> */
+    public function avatar(): BelongsTo
+    {
+        return $this->belongsTo(File::class, 'avatar_id');
     }
 
     public function canAccessPanel(Panel $panel): bool
