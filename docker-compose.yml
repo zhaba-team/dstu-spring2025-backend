@@ -56,6 +56,8 @@ services:
             interval: 1s
             timeout: 3s
             retries: 30
+        expose:
+          - 6379
 volumes:
     pg_data:
     redis_data:
