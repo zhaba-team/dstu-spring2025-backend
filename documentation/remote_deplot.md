@@ -18,3 +18,4 @@ $user->fill([
 'email' => 'your_mail@gmail.com',
 ])->save();
 ```
+в /storage/app/public создать папку files - это папка используется по умолчанию для сохранения файлов
