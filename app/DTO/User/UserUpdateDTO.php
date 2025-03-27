@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DTO\User;
 
 use Illuminate\Http\UploadedFile;
+use Spatie\LaravelData\Attributes\Validation\Image;
 use Spatie\LaravelData\Attributes\Validation\Unique;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Max;
@@ -24,6 +25,7 @@ class UserUpdateDTO extends Data
             ignore: new RouteParameterReference('userId')
         ), Email]
         public string $email,
+        #[Image, Max(8192)]
         public ?UploadedFile $avatar,
     ) {
     }
