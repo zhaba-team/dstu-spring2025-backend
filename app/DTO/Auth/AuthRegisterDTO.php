@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DTO\Auth;
 
 use App\Enums\UserRole;
+use App\Validation\Attributes\UserPublicRole;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Password;
@@ -18,6 +19,7 @@ class AuthRegisterDTO extends Dto
         public string $name,
         #[Unique('users'), Email]
         public string $email,
+        #[UserPublicRole]
         public UserRole $role,
         #[Password(min:8)]
         public string $password,
