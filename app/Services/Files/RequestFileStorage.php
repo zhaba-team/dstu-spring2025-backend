@@ -10,7 +10,7 @@ use App\Models\File;
 
 class RequestFileStorage
 {
-    public function saveFile(UploadedFile $uploadedFile, DirectoryName $directory = DirectoryName::DEFAULT): File
+    public function saveFile(UploadedFile $uploadedFile, DirectoryName $directory = DirectoryName::Default): File
     {
         $fileStorage = new FileStorage(
             $uploadedFile->getRealPath(),

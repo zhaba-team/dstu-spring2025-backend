@@ -6,5 +6,5 @@ namespace App\Enums;
 
 enum DirectoryName: string
 {
-    case DEFAULT = 'files';
+    case Default = 'files';
 }

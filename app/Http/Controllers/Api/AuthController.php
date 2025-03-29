@@ -9,10 +9,10 @@ use App\Services\Controllers\AuthService;
 use App\DTO\Auth\AuthRegisterDTO;
 use App\DTO\Auth\AuthLoginDTO;
 
-class AuthController
+final readonly class AuthController
 {
     public function __construct(
-        protected AuthService $authService
+        private AuthService $authService
     ) {
     }
 

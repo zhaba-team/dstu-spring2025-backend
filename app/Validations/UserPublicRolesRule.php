@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Validations;
 
 use Illuminate\Contracts\Validation\ValidationRule;
-use App\Enums\ApiErrorCode;
 use App\Enums\UserRole;
 use Closure;
 
@@ -17,7 +16,7 @@ class UserPublicRolesRule implements ValidationRule
 
         foreach ($publicRoles as $role) {
             if ($value !== $role->value) {
-                $fail(ApiErrorCode::VALIDATION_ERROR->message());
+                $fail(__('auth.err_role'));
             }
         }
     }
