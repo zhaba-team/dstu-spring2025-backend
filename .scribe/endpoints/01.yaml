@@ -1,0 +1,215 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ii9OTVpTd1Z0L2ZMWCtoRmxnLzJuZFE9PSIsInZhbHVlIjoib2RjT2EyWUQ1M0NBRTN0K2lielVuN0QxeTRVbGpYR3Jqd2dJZTY5cm1xdGJiRjJuZnU1NHpuM3EzeGdma0d4ejd6TjBIdTVHb1JjV1VwZEozaS9tRzBhSFNRelZrenBPbWk3Y3hlR1kzaTJrM3J4RmJyd2ExL2FDZnBIandDS1oiLCJtYWMiOiIzYTQxNDk2YTcwMWU1MmVlY2I5ODgwMzJhY2ExNDVlMjA5YzA5NWYwZmZkZWViNjFmNTRkMmJlM2M3YjA1YzRkIiwidGFnIjoiIn0%3D; expires=Sat, 29 Mar 2025 23:14:18 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6ImdFb25KNGVMMGpJUzgxZXBQMmE1ZFE9PSIsInZhbHVlIjoiL0N3cHUzejJNUWNqZG43Mi8zN3JUM3pZcHVJZTdONEdwU3AwZXZKSHg4QVVkeHgrS1lSMnVMN3V1aWE3KzhjL25uaWU2dXJGQ0NndEVxTUN2YmxUVUJnemU1TWU3aWhvVHEwSzdFcDdzckZpbG53R1R6em9Fc3NBeE50SlQ5RzAiLCJtYWMiOiJmNjY0NzhjZTIxYWQwMzhhODYzNTcwOTQwMTk0MjNlNjdmMjFhZGIzNzk3NGYyZjMxYWY1YmQxNjVkZWI0MmQ4IiwidGFnIjoiIn0%3D; expires=Sat, 29 Mar 2025 23:14:18 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/users/roles
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Img4UEd1SkNQL3pSZHZvVnpSTndKTmc9PSIsInZhbHVlIjoiT2plR05ZZTRVOG55cWVGQWpqcXJGMUI2Q1YxUThsOXhCRWFZRDkvaTVGS1RXYjhQTHFUNERxbUFUaFo4TjJ5bzF3YXV3ZjJOWkJJaEpKekNsdFlhUi9pYnl4UkpxT1cxSlBDZlE2aFhiUDJFNnpsMHI1L3ZkTkNaRmJUaUxobzEiLCJtYWMiOiI1N2Y2MWQ1MzFjZDQ2ZjdhZDc0ZDQ2MTI3ZDRjNGY5YjUxMTNiZGNkYTEwNWI3NmVkYmIzNWYyMmI5YzA1MDNjIiwidGFnIjoiIn0%3D; expires=Sat, 29 Mar 2025 23:14:18 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6ImJ2V0c0LzJXN3BML1FzcnJpa1pRaGc9PSIsInZhbHVlIjoiVFVQS1Y5YjVoZTJ1MU1aRUxDQWp3aFVlaXBYZmJaOGhUVEsvOG9IQk5OOHpMdDVzM3BUUGZnbUMzVzVuQnEvaWlHL05hUUJCcUNFcXVKbzVzWTl5cDVXSzgzb01SdTBiMmRwRTBoNEtlZkxFdVZNWUZOZnpyMHFNaTFTa1hwdDAiLCJtYWMiOiI2MzNmNzA3Mzk3NWVjMjc5ZGVmZjRhMjdiNjRmZGZkZjk2YTM1MWYzOTQzOWFjNWJiYzA3NGM5ZTk0YThmNzFhIiwidGFnIjoiIn0%3D; expires=Sat, 29 Mar 2025 23:14:18 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/emails/send-verify-code
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Im90NENpN1lrR0hpVWEzMWdBck0xNGc9PSIsInZhbHVlIjoiQVdDSktsRVZHd0szaDdZa1BobzRUWFEvaDJvbkpTaDJuUTBMOEdJN01UUjRlZkQ5TzBKU2xpbUd1UnZySEhQWXNENUdSQzhIbEc3amhEbmsrcnc0eUZhTkJVVTN2S2FSUnVUOFhIcXFuZG5ZT25qaDhDVmhSWkY4VW4zYzczMXAiLCJtYWMiOiI4ODgxNzBiMWZiNTZkZGU3NjViNWVkMjk2ZDI1NmRhOGRmOWNlOThiYzE2ZTUxYzhjODllZTFjNTRhMjA3OTA5IiwidGFnIjoiIn0%3D; expires=Sat, 29 Mar 2025 23:14:18 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6IjNSeTBFUDBGM0xhdlFDaG0vb0dyOUE9PSIsInZhbHVlIjoic0FSNy9peEFLNUwvV2FlSWFLNkNYdFg5OHdac0t4WUc3clpEQjBIYlQvR29SbWtmcXdxa0VKbmNJeElnVDRDVGxlN2UwM2hXVlVxQmNsOTVOVklSRmlubEdVZkRDbXlzVFAxVjRWdW8waFFwTFRVSWxtaE1PRHZsU1RJc1dINnEiLCJtYWMiOiJjZGI4ZDYzYzNhYWIwOTUxZmFhOTczY2M1MDUwZjg2MmVmNGViZDg1MDQzYjVjY2RjMGNmZTlmMzYzYjM3YmMxIiwidGFnIjoiIn0%3D; expires=Sat, 29 Mar 2025 23:14:18 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/emails/verify-code
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/users/{userId}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      userId:
+        name: userId
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      userId: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
