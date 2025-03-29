@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DTO\User;
 
+use Carbon\Carbon;
 use Spatie\LaravelData\Data;
 use App\Enums\UserRole;
 use App\Models\User;
@@ -16,6 +17,7 @@ class UserShowDTO extends Data
         public string $email,
         public UserRole $role,
         public ?string $avatar,
+        public ?Carbon $emailVerified,
     ) {
     }
 
@@ -26,7 +28,8 @@ class UserShowDTO extends Data
             $user->name,
             $user->email,
             $user->role,
-            $user->avatar?->url
+            $user->avatar?->url,
+            $user->email_verified_at
         );
     }
 }
