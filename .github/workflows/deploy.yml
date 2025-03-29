@@ -6,7 +6,10 @@ on:
       - completed
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event.workflow_run.conclusion == 'success'
+    if: |
+      github.ref == 'refs/heads/main' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event_name != 'pull_request'
     runs-on: [ ubuntu-latest ]
     environment: deniskorbakov
     steps:
