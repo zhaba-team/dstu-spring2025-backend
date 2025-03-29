@@ -62,6 +62,7 @@ class EmailVerificationService
             try {
                 Mail::to($user->email)->send(new VerifyCodeMail($code));
             } catch (\Throwable $e) {
+                Cache::forget($key);
                 Log::error($e->getMessage());
 
                 abort(Response::HTTP_BAD_REQUEST, __('email.err_send'));
