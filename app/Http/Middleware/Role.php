@@ -7,7 +7,6 @@ namespace App\Http\Middleware;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Enums\ApiErrorCode;
 use Closure;
 
 class Role
@@ -19,10 +18,8 @@ class Role
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        $error = ApiErrorCode::UNAUTHENTICATED;
-
         if (! Auth::check()) {
-            abort($error->httpStatusCode(), $error->message());
+            abort(Response::HTTP_UNAUTHORIZED, __('auth.unauthorised'));
         }
 
         $user = Auth::user();
@@ -33,6 +30,6 @@ class Role
             }
         }
 
-        abort($error->httpStatusCode(), $error->message());
+        abort(Response::HTTP_BAD_REQUEST, __('auth.err_role'));
     }
 }

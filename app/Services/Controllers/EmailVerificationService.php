@@ -6,13 +6,12 @@ namespace App\Services\Controllers;
 
 use App\DTO\Email\EmailVerificationCodeDTO;
 use App\DTO\User\UserShowDTO;
-use App\Enums\ApiErrorCode;
 use App\Mail\VerifyCodeMail;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Random\RandomException;
-use Symfony\Component\HttpFoundation\Response as HttpResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class EmailVerificationService
 {
@@ -24,7 +23,7 @@ class EmailVerificationService
         $key = 'email_verification_' . $user->id;
 
         if ($user->email_verified_at) {
-            abort(HttpResponse::HTTP_BAD_REQUEST, __('email.verified'));
+            abort(Response::HTTP_BAD_REQUEST, __('email.verified'));
         }
 
         if (Cache::get($key) === $requestDTO->code) {
@@ -36,7 +35,7 @@ class EmailVerificationService
             return UserShowDTO::from($user)->toArray();
         }
 
-        abort(HttpResponse::HTTP_BAD_REQUEST, __('email.err_verified'));
+        abort(Response::HTTP_BAD_REQUEST, __('email.err_verified'));
     }
 
     /**
@@ -49,7 +48,7 @@ class EmailVerificationService
         $key = 'email_verification_' . $user->id;
 
         if ($user->email_verified_at) {
-            abort(HttpResponse::HTTP_BAD_REQUEST, __('email.verified'));
+            abort(Response::HTTP_BAD_REQUEST, __('email.verified'));
         }
 
         if (! Cache::get($key)) {
@@ -63,12 +62,12 @@ class EmailVerificationService
             } catch (\Throwable $e) {
                 Log::error($e->getMessage());
 
-                abort(HttpResponse::HTTP_BAD_REQUEST, __('email.err_send'));
+                abort(Response::HTTP_BAD_REQUEST, __('email.err_send'));
             }
 
             return ['message' => __('email.success_send')];
         }
 
-        return ['message' => __('email.sending')];
+        abort(Response::HTTP_BAD_REQUEST, __('email.sending'));
     }
 }

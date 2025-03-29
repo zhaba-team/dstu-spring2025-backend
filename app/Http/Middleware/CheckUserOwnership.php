@@ -6,7 +6,6 @@ namespace App\Http\Middleware;
 
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
-use App\Enums\ApiErrorCode;
 use Closure;
 
 class CheckUserOwnership
@@ -16,17 +15,13 @@ class CheckUserOwnership
         $userId = $request->route('userId');
 
         if (!is_numeric($userId)) {
-            $error = ApiErrorCode::BAD_REQUEST;
-
-            abort($error->httpStatusCode(), $error->message());
+            abort(Response::HTTP_BAD_REQUEST, __('user.err_id'));
         }
 
         $userId = (int) $userId;
 
         if (auth()->id() !== $userId) {
-            $error = ApiErrorCode::ERROR_OWNERSHIP;
-
-            abort($error->httpStatusCode(), $error->message());
+            abort(Response::HTTP_BAD_REQUEST, __('user.ownership'));
         }
 
         return $next($request);
