@@ -7,6 +7,7 @@ namespace App\Services\Controllers;
 use App\DTO\Email\EmailVerificationCodeDTO;
 use App\DTO\User\UserShowDTO;
 use App\Mail\VerifyCodeMail;
+use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -18,7 +19,7 @@ class EmailVerificationService
     /** @return array<string, mixed> */
     public function verify(EmailVerificationCodeDTO $requestDTO): array
     {
-        $user = auth()->user();
+        $user = User::query()->findOrFail(auth()->id());
 
         $key = 'email_verification_' . $user->id;
 
@@ -44,7 +45,8 @@ class EmailVerificationService
      */
     public function send(): array
     {
-        $user = auth()->user();
+        $user = User::query()->findOrFail(auth()->id());
+
         $key = 'email_verification_' . $user->id;
 
         if ($user->email_verified_at) {
@@ -58,7 +60,7 @@ class EmailVerificationService
             Cache::put($key, $code, $ttl);
 
             try {
-                Mail::to(auth()->user()->email)->send(new VerifyCodeMail($code));
+                Mail::to($user->email)->send(new VerifyCodeMail($code));
             } catch (\Throwable $e) {
                 Log::error($e->getMessage());
 

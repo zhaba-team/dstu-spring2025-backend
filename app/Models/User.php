@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Builders\UserBuilder;
 use App\Enums\UserRole;
+use Carbon\Carbon;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -20,7 +21,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $email
  * @property string $name
  * @property ?int $avatar_id
- * @property ?string $email_verified_at
+ * @property ?Carbon $email_verified_at
  * @property UserRole $role
  * @property ?File $avatar
  */
