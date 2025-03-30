@@ -2103,7 +2103,7 @@ response.json()</code></pre>                                        </div>
                                                                                                                     access-control-allow-origin
                                                             : *
                                                                                                                     set-cookie
-                                                            : XSRF-TOKEN=eyJpdiI6ImVxclUzVEVOYlZwOHUxUzl5ZDlTK1E9PSIsInZhbHVlIjoidDlIRUR0alNwYUFJMmEvbnh5ai9udDhseU1PWGc0ejdxV1pzL1BRbkJaRHhuOXRhMFh5NytJWTliczFnU1crWUkzTXMwZW1oZnY4OEMxOVVEdTNwTFNTdDkwVEdnWk9CU21WMWlURGFtY0FuYzhTTC90NnhBakhNZU5mWGx1TlMiLCJtYWMiOiJiZjZmZTA5ZDNjNmJiODNjN2M2MDNiNTE0NWVkNzYwM2FkNjY0NDU0MGQ4MTJiOWU2ZDYyZDQ0OTJiNzZmYWQ3IiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:12:36 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6IkF0R0ZiN1pnSjRoVlhZcXAzWGdwVlE9PSIsInZhbHVlIjoiZkRHWElzUUczN3Y4ZnRWUXVaa0ttT0luaFl5TVk1R2RvZURwcER0QXVsQ3EyS2o1UDVkTHM0bmJxVEUwVCsySTJ0V0VOTU9KNG52QmVzYmxCQUJEZG1ETGZFY3RRWnBQNm1Uc2xDUFFRSGhjV1pIdEdESzR3QXhFbHF2NU14UnciLCJtYWMiOiI0NzU4OGJjMTlmYjcyYmU0NjZkNjc0OWY5ZWVjNmM1NTdlN2ZiM2M3MjJjZjBlZTRhZWUxOWE2YmU3MWMyMTkzIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:12:36 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+                                                            : XSRF-TOKEN=eyJpdiI6Im5DbjJLVTRRdUlib25hWFY4a0dWdlE9PSIsInZhbHVlIjoiajd5Z2xmcDIwZWFmZUFtQkpkdHhHbVl2clRFem5iSnVCeVZOUHpQY1BkRlRuZ1pjRFFKTVBadGxHUHNkS294NmRIeisvbHlCZHJYTWs3ZGgvRWswQkdUZHRJWkw0UE5oSzBIRXdIQ2dmekgyeWNNZmdGSVpReTJDVEJqeVpnMzUiLCJtYWMiOiI0YTllNzMzYjRjZWM1YWI5NWFiODExNTVjNDAxMTU1ZTY2MWRmNTU5NGM5NzFlNzFkZjdmMGQ5YzI4ZGE5MzkxIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:27:17 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6Inoza2t2M004aEs5RytLamlialJhWFE9PSIsInZhbHVlIjoiOTRHNjVSNVpoVGFWbmhkU2lFdC9tdi9Kem1keVkxVW5RVC92cmExTzRkcE9QZVBZSVVQMXEwcnIvMitoNWdhaVQrWU8zUVl4UEVQcTQxQ0YxMkpMQmpGeWRrSTExcVVyVGhocVZGbE1QVlYrMU5RMG9VQVBQU0ZGRkhLUXJFUXMiLCJtYWMiOiJlZTA5ZmI2MmQxMjc3YjAxN2Q3M2NkNzJmOTM2NDE3NDQyNjc5OTllODM2NzZhM2Y4ODY2YjhjMTYwNGM5NjU2IiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:27:17 GMT; Max-Age=7200; path=/; httponly; samesite=lax
                                                          </code></pre>
                                             </details>
                                                                                                                                                                         
@@ -2597,7 +2597,7 @@ response.json()</code></pre>                                        </div>
                                                                                                                     access-control-allow-origin
                                                             : *
                                                                                                                     set-cookie
-                                                            : XSRF-TOKEN=eyJpdiI6ImJKMzVlcnJSLzdxRjN3YXhCMWFMZFE9PSIsInZhbHVlIjoieHg1TUFWM0JURFJ6Q0JDcm1sSGpJWE5BNkZGVFV5ejdFeC9OZnREQmQ2Z1U0bTg3QlRtcS9UcDFnNlF0NHV4R3BHbVZ5cS84NWwzRzBDZWZlRTM5eXVqeEVCNXdpdDBzcVZPS1RLaEx1WVRURDdOb2F2aU5NS0hoVWxSbXNRWEUiLCJtYWMiOiJhZWQ4MzUxMmM5YWEyZDhiZTI2ZTRkMWRlODQzZTMzZWJmODAwMjdkZjJlYjY2MWJiZTI1ZjRiM2QwZTVhNTdmIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:12:36 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6Ild4ekpGemhobXBrQTNSMXllTHIzTFE9PSIsInZhbHVlIjoieE5WVi84Skl1MjJiN2xGZ2tPQXpyQWtwRkpvdldLYjZIbzlJeHMvNXZ3ZUR4bzU2aEsvZU5Xd3FyZmNDYlNHcXZ5dkZPdzZ1RXYvKzljN3pERi9Oa1lhRFFLOC9pWVlXRDgyZTVpbUlHeVdib2JtSWN1eVE1RW9UL0p5ZERycFgiLCJtYWMiOiJkM2FkNTc1MDE1MDU4NGFhY2FlMWI1NzQxNTU1ZWM3NGFmMDA4ZWY2NDc2YmJiNGU1YWYwNTNiM2VlOWMyN2VkIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:12:36 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+                                                            : XSRF-TOKEN=eyJpdiI6IlRETFpCQ2NGQjVoV05oTFZTNWVpRGc9PSIsInZhbHVlIjoiTmxMMFM4R1VqalgzbE93aGdjUEJaVFFHcVNwRS96VzBITHdrdVRtZXRQNlVhTzdJZER6UHZSNUpMMTk0YkVEajJLQlJabUdYWlJyYW80VC9vVG4vNUd2anFNRFAwZGVOcXJjdVQ1V2dvbVVzTklRT0Vuay9qVy9TOXB3MFVObEkiLCJtYWMiOiJlYzQzMDYyYWEwNWQ1MjYwNWMwY2QwOGIyZTcxNmRhYjFlNDhlZWM1OWY4MWUwNmUwNTZmODUyMDk0YjY3MmVkIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:27:17 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6IkdDOW9TU2JKRU1PcXpETWoyRlhOT2c9PSIsInZhbHVlIjoiaFJwamtnMTdnWCtBWlBuNWh1eUI2ak96M3VxTmZkTjM3czluWHBzbzN0b28xNHJ0L2JQYm9EQXBSMnZJQUJCTStSdEVOajNVb0hxVzFLNVBNempaVm03Y2VvYTJ0STF1RnVkSzFKY0hjSS9sd1AzaWFHYkYxaEhTK3lVV1dUc2siLCJtYWMiOiJjYmZmZGE1YjBmN2M5NTc5Y2M1ZmQ2MWYxZjgxNDgzNzg3NWI4MmY4ZmQxNGNhNjUzZGVhMjFhZjZkODUyYjhiIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:27:17 GMT; Max-Age=7200; path=/; httponly; samesite=lax
                                                          </code></pre>
                                             </details>
                                                                                                                                                                         
@@ -2821,7 +2821,7 @@ response.json()</code></pre>                                        </div>
                 <span>Example:</span> <!-- <span> important for spacing -->
                 <div class="sl-flex sl-flex-1 sl-flex-wrap" style="gap: 4px;">
                     <div class="sl-max-w-full sl-break-all sl-px-1 sl-bg-canvas-tint sl-text-muted sl-rounded sl-border">
-                        /tmp/phpmfao1nrsetsba3Lz8v1
+                        /tmp/phphfqub6uvr5pneyDGHQg
                     </div>
                 </div>
             </div>
@@ -3116,7 +3116,7 @@ response.json()</code></pre>                                        </div>
     --header "Accept: application/json" \
     --form "name=username"\
     --form "email=test@example.com"\
-    --form "avatar=@/tmp/phpmfao1nrsetsba3Lz8v1" </code></pre>                                        </div>
+    --form "avatar=@/tmp/phphfqub6uvr5pneyDGHQg" </code></pre>                                        </div>
                                     </div>
                                 </div>
                                                             <div class="sl-bg-canvas-100 example-request example-request-javascript"
@@ -3170,7 +3170,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'avatar',
-                'contents' =&gt; fopen('/tmp/phpmfao1nrsetsba3Lz8v1', 'r')
+                'contents' =&gt; fopen('/tmp/phphfqub6uvr5pneyDGHQg', 'r')
             ],
         ],
     ]
@@ -3190,7 +3190,7 @@ url = 'http://localhost/api/users/1'
 files = {
   'name': (None, 'username'),
   'email': (None, 'test@example.com'),
-  'avatar': open('/tmp/phpmfao1nrsetsba3Lz8v1', 'rb')}
+  'avatar': open('/tmp/phphfqub6uvr5pneyDGHQg', 'rb')}
 payload = {
     "name": "username",
     "email": "test@example.com"
@@ -3630,7 +3630,7 @@ response.json()</code></pre>                                        </div>
                                                                                                                     access-control-allow-origin
                                                             : *
                                                                                                                     set-cookie
-                                                            : XSRF-TOKEN=eyJpdiI6ImV6ZHQrUjZrdW9QV3FNU3oyVURkSHc9PSIsInZhbHVlIjoidkF6eTdnVWxPSlBWbUdMZ0VjWkw2UWtVVVdadExLbGc1bjNQaktNSkNGWVBTVkdQOVBzTE50UVdIb0NLb2xpVjNLRGx6anRtazhYSWM3Q1RUakkzUW9aQUVDUE15bE5ab25jMU1YT1FrSjZCcGdub0ZGcmt1clpDZFBqWGpVZEoiLCJtYWMiOiJmYjM0ZDAzZTEzNTY3YTY1ZGNmYTI1YzVkMzA4ZGRmOWNlZDY3OWIyYjFjZTJjNDYyYzgxYmQ0NmE4ZjI5Mjk5IiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:12:36 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6IkZEakNwQVdaSnBxK0hQKy9paXJJN2c9PSIsInZhbHVlIjoiU1dMZXdJWnNaanZzb1hZaUltcENmTERqVHAreExwa1BJWVhHclUxTG5tZnpWL2tlM3d2bUcwRm1GS3VPMlFBYTMyLzFYM0NmSFhua2NVbXkraFpoRW9DZm1pQ2gwa2kxcVdrb1FLM3g3TGhJSTcwM3ZMK1o1L2lydzcxcm8zU1oiLCJtYWMiOiIzNjM3MjU5OWU4ZGUwMDBiNDk2YTkyMWVkYTM0YWE4M2RkMWMxN2JkNmRjNGI4ZWE4MGU1MGI2MjY2ZWU0OGIzIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:12:36 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+                                                            : XSRF-TOKEN=eyJpdiI6InlaZkRSZ3hsRWhKZmh5cUVuaHBHY1E9PSIsInZhbHVlIjoiWUN2S05nMkZKUmZPZ1VHOU1lU2M2c2VLSStESzd1NUUzYVFsSkZwOWl4c0VPVDRNYVFOZDFCQ3JQN0wzenlMKzdSak80ZnA4anNjYzMrWndkbW9JSmFrM0xYRHh5eVR5eWRLTXZ6emN6RVdKYUVuTXdBWGdCdkpmWGpmdTZFWlMiLCJtYWMiOiI0NzczYjU4Yjg1NzA2OTM4Yjk2ZjE2YmY4YzNhOWMzOWIzNTk0ZTIzYzVmY2EwYTE0OTgyMGEwM2IxZTIxOTYxIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:27:17 GMT; Max-Age=7200; path=/; samesite=lax; deniskorbakov_session=eyJpdiI6IlorTFZhNVJ3cE15Q3djYTlpcTdMY3c9PSIsInZhbHVlIjoicXRxc2NOOTFwb3BMODgvcTlSazloN29sK00wZEdQNjEydGR1eTlCS2k3L1kvZmtWdHlZOGdkYndiTXhvOEVrQXdFeWtjeW53OE9PWUcvclNNQlhib3AxRXB0Qnd0VWRsd0VBZHl1VEdBRzk5MFRpQWU5TGV0UFN2Z3RJd3p4Z1UiLCJtYWMiOiJlZDRlZjIyMzcyNDBhM2FkZTQ1N2E2ZDZiMTM1Mzc3MTNjNWY2MzhmOTZmOTBmMDc0ZDYxYzgzYzg2Mjg1MDUzIiwidGFnIjoiIn0%3D; expires=Sun, 30 Mar 2025 14:27:17 GMT; Max-Age=7200; path=/; httponly; samesite=lax
                                                          </code></pre>
                                             </details>
                                                                                                                                                                         
