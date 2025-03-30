@@ -12,7 +12,7 @@ use Knuckles\Scribe\Attributes\Group;
 use App\DTO\Auth\AuthRegisterDTO;
 use App\DTO\Auth\AuthLoginDTO;
 
-#[Group('Авторизация')]
+#[Group('Авторизация 1')]
 final readonly class AuthController
 {
     public function __construct(
