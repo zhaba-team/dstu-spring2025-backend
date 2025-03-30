@@ -11,5 +11,5 @@
 Команда для генерации:
 
 ```bash
-php artisan scribe:generate
+make doc-generate
 ```
