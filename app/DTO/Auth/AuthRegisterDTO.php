@@ -21,7 +21,7 @@ class AuthRegisterDTO extends Dto
         public string $email,
         #[UserPublicRole]
         public UserRole $role,
-        #[Password(min:8)]
+        #[Password(min: 8)]
         public string $password,
     ) {
     }

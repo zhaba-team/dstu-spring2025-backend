@@ -26,3 +26,6 @@ yarn-error.log
 **/caddy
 frankenphp
 frankenphp-worker.php
+!scribe/
+.scribe/*
+resources/views/scribe/*

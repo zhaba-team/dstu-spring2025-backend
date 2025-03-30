@@ -1,13 +1,13 @@
 include .env
 
 # набор команд для обновление проекта в продакшене
-update-project: pull composer-install db-migrate build-front rm-images build-prod restart
+update-project: pull doc-generate composer-install db-migrate build-front rm-images build-prod restart
 
 # набор команд для инициализации проекта локально
-init: build composer-install build-front key-generate storage-link db-migrate seed restart build-wait
+init: build composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-wait
 
 # набор команд для инициализации проекта на проде
-init-prod: build-prod composer-install build-front key-generate storage-link db-migrate seed restart build-prod
+init-prod: build-prod composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-prod
 
 build:
 	@echo "Building containers"
@@ -64,6 +64,9 @@ storage-link:
 seed:
 	@echo "Db Seed"
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan db:seed
+doc-generate:
+	@echo "Key generate"
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan scribe:generate
 restart:
 	@echo "restart container"
 	@docker restart php.${APP_NAMESPACE}

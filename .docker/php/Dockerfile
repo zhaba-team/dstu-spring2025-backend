@@ -20,6 +20,8 @@ RUN install-php-extensions \
 
 WORKDIR /app
 
+COPY . /app
+
 COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
 
 COPY --from=node:23 /usr/local/lib/node_modules /usr/local/lib/node_modules
