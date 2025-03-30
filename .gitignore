@@ -27,4 +27,4 @@ yarn-error.log
 frankenphp
 frankenphp-worker.php
 !scribe/
-.scribe/
+.scribe/*
