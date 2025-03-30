@@ -12,7 +12,6 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
     Route::post('/login', [AuthController::class, 'login']);
 
     Route::group(['prefix' => 'users'], static function (): void {
-        Route::get('/{id}', [UserController::class, 'show']);
         Route::get('/roles', [UserController::class, 'roles']);
     });
 
@@ -25,6 +24,7 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
         });
 
         Route::group(['prefix' => 'users'], static function (): void {
+            Route::get('/{userId}', [UserController::class, 'show']);
             Route::post('/{userId}', [UserController::class, 'update'])->middleware('checkUserOwnership');
         });
     });

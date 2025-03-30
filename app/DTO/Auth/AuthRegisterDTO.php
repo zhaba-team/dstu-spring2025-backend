@@ -6,7 +6,6 @@ namespace App\DTO\Auth;
 
 use App\Enums\UserRole;
 use App\Validations\Attributes\UserPublicRole;
-use Knuckles\Scribe\Attributes\BodyParam;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Password;
@@ -22,7 +21,7 @@ class AuthRegisterDTO extends Dto
         public string $email,
         #[UserPublicRole]
         public UserRole $role,
-        #[Password(min:8)]
+        #[Password(min: 8)]
         public string $password,
     ) {
     }

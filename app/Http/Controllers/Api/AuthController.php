@@ -11,7 +11,6 @@ use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Group;
 use App\DTO\Auth\AuthRegisterDTO;
 use App\DTO\Auth\AuthLoginDTO;
-use Knuckles\Scribe\Attributes\Response;
 
 #[Group('Авторизация')]
 final readonly class AuthController
@@ -21,25 +20,39 @@ final readonly class AuthController
     ) {
     }
 
-    /** @return array<string, mixed> */
-    #[Response(content: '{"message": "User not found"}', status: 404, description: "user not found z")]
-    #[BodyParam('name', 'string', 'username', required: true)]
+    /**
+     * Регистрация пользователя
+     *
+     * @return array<string, mixed>
+     */
+    #[BodyParam('name', 'string', 'Имя пользователя', required: true, example: 'name')]
+    #[BodyParam('email', 'string', 'Почта', required: true, example: 'test@example.com')]
+    #[BodyParam('role', 'string', 'Получить роль для регистрации "/api/users/roles/"', required: true, example: 'user')]
+    #[BodyParam('password', 'string', 'Пароль', required: true, example: 'password')]
     public function register(AuthRegisterDTO $authRegisterDTO): array
     {
         return $this->authService->register($authRegisterDTO);
     }
 
     /**
+     * Авторизация пользователя
+     *
      * @return array<string, mixed>
      * @throws ValidationException
      */
+    #[BodyParam('email', 'string', 'Почта', required: true, example: 'test@example.com')]
+    #[BodyParam('password', 'string', 'Пароль', required: true, example: 'password')]
     public function login(AuthLoginDTO $authLoginDTO): array
     {
         return $this->authService->login($authLoginDTO);
     }
 
 
-    /** @return array<string, string> */
+    /**
+     * Выход из аккаунта
+     *
+     * @return array<string, string>
+     */
     #[Authenticated]
     public function logout(): array
     {

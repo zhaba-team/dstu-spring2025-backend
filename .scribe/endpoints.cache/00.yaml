@@ -12,7 +12,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Регистрация пользователя'
       description: ''
       authenticated: false
       custom: []
@@ -26,24 +26,51 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: username
+        description: 'Имя пользователя'
         required: true
-        example: architecto
+        example: name
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: Почта
+        required: true
+        example: test@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      role:
+        name: role
+        description: 'Получить роль для регистрации "/api/users/roles/"'
+        required: true
+        example: user
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: Пароль
+        required: true
+        example: password
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: architecto
+      name: name
+      email: test@example.com
+      role: user
+      password: password
     fileParameters: []
-    responses:
-      -
-        status: 404
-        content: '{"message": "User not found"}'
-        headers: []
-        description: 'user not found z'
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -59,7 +86,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Авторизация пользователя'
       description: ''
       authenticated: false
       custom: []
@@ -70,8 +97,30 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: Почта
+        required: true
+        example: test@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: Пароль
+        required: true
+        example: password
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: test@example.com
+      password: password
     fileParameters: []
     responses: []
     responseFields: []
@@ -89,7 +138,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Выход из аккаунта'
       description: ''
       authenticated: true
       custom: []
