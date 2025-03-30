@@ -1,7 +1,7 @@
 include .env
 
 # набор команд для обновление проекта в продакшене
-update-project: pull doc-generate composer-install db-migrate build-front rm-images build-prod restart
+update-project: pull composer-install db-migrate build-front rm-images build-prod doc-generate restart
 
 # набор команд для инициализации проекта локально
 init: build composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-wait
