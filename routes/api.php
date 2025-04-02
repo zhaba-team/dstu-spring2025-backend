@@ -20,7 +20,7 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
 
         Route::group(['prefix' => 'emails'], static function (): void {
             Route::get('/send-verify-code', [EmailVerificationController::class, 'send']);
-            Route::post('/verify-code', [EmailVerificationController::class, 'verify']);
+            Route::post('/verify-code', [EmailVerificationController::class, 'verify'])->middleware('throttle:verify-code');
         });
 
         Route::group(['prefix' => 'users'], static function (): void {
