@@ -34,6 +34,8 @@ final readonly class EmailVerificationController
     /**
      * Проверить код
      *
+     * Стоит ограничение на проверку кода (3 попытки в минуту)
+     *
      * @return array<string, mixed>
      */
     #[Authenticated]
