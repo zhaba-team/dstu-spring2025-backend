@@ -47,12 +47,16 @@ final class UserService
             $savedAvatar = $this->requestFileStorage->saveFile($requestDTO->avatar);
         }
 
-        $user->name = $requestDTO->name;
-        $user->email = $requestDTO->email;
-
         if (isset($savedAvatar)) {
             $user->avatar_id = $savedAvatar->id;
         }
+
+        if (isset($requestDTO->email) && $user->email !== $requestDTO->email) {
+            $user->email_verified_at = null;
+        }
+
+        $user->name = $requestDTO->name;
+        $user->email = $requestDTO->email;
 
         $user->save();
 
