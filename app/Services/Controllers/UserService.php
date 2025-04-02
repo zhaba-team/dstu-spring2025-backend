@@ -50,7 +50,7 @@ final class UserService
         $user->name = $requestDTO->name;
         $user->email = $requestDTO->email;
 
-        if ($savedAvatar) {
+        if (isset($savedAvatar)) {
             $user->avatar_id = $savedAvatar->id;
         }
 
