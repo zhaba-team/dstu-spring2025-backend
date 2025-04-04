@@ -27,5 +27,5 @@ cp .env.example .env ; make init
 ```
 
 Перейти по [ссылке](http://localhost)
-
+test
 
