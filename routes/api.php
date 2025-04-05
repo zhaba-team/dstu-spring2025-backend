@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\StatisticController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,5 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
         });
     });
 });
+
+Route::get('/statistics', [StatisticController::class, 'getAll']);

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Race;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
-class RaceController
+class MemberController
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +36,7 @@ class RaceController
     /**
      * Display the specified resource.
      */
-    public function show(Race $race): void
+    public function show(Member $member): void
     {
         //
     }
@@ -44,7 +44,7 @@ class RaceController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Race $race): void
+    public function edit(Member $member): void
     {
         //
     }
@@ -52,7 +52,7 @@ class RaceController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Race $race): void
+    public function update(Request $request, Member $member): void
     {
         //
     }
@@ -60,7 +60,7 @@ class RaceController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Race $race): void
+    public function destroy(Member $member): void
     {
         //
     }

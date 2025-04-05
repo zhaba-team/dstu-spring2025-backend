@@ -15,7 +15,6 @@ return new class extends Migration
             $table->foreignId('race_id')->constrained('races')->onDelete('cascade');
             $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
             $table->integer('place');
-            $table->timestamps();
         });
     }
 
