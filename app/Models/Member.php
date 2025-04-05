@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property integer $number
+ * @property string $color
+ * @property MemberRace $pivot
+ */
 class Member extends Model
 {
     /** @use HasFactory<\Database\Factories\MemberFactory> */
