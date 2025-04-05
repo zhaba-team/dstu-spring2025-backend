@@ -25,6 +25,6 @@ return [
     ],
     [
         'number' => 6,
-        'color' => '#black',
+        'color' => '#000000',
     ]
 ];

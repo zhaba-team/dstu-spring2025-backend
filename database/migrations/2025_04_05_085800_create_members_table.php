@@ -12,10 +12,12 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table): void {
             $table->id();
-            $table->integer('reaction_time')->nullable();
-            $table->integer('boost')->nullable();
-            $table->integer('max_speed')->nullable();
-            $table->integer('speed_loss')->nullable();
+            $table->float('reaction_time')->nullable();
+            $table->float('boost')->nullable();
+            $table->float('max_speed')->nullable();
+            $table->float('speed_loss')->nullable();
+            $table->integer('stability_from')->nullable();
+            $table->integer('stability_to')->nullable();
             $table->integer('number')->unique();
             $table->string('color');
             $table->timestamps();

@@ -42,26 +42,55 @@ class MemberResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('number')
-                    ->label('Номер участника')
-                    ->required()
-                    ->numeric()
-                    ->unique(ignoreRecord: true),
-                Forms\Components\ColorPicker::make('color')
-                    ->label('Цвет')
-                    ->required(),
-                Forms\Components\TextInput::make('reaction_time')
-                    ->label('Среднее время реакции на старте (мс.)')
-                    ->numeric(),
-                Forms\Components\TextInput::make('boost')
-                    ->label('Ускорение (м/с², начальная фаза забега)')
-                    ->numeric(),
-                Forms\Components\TextInput::make('max_speed')
-                    ->label('Максимальная скорость (м/с)')
-                    ->numeric(),
-                Forms\Components\TextInput::make('speed_loss')
-                    ->label('Коэффициент потери скорости (на финальной стадии)')
-                    ->numeric(),
+                Forms\Components\Grid::make()
+                    ->schema([
+                         Forms\Components\TextInput::make('number')
+                             ->label('Номер участника')
+                             ->required()
+                             ->numeric()
+                             ->unique(ignoreRecord: true),
+                         Forms\Components\ColorPicker::make('color')
+                             ->label('Цвет')
+                             ->required(),
+                    ])
+                     ->columns(4),
+                Forms\Components\Section::make()
+                    ->schema([
+                         Forms\Components\TextInput::make('reaction_time')
+                             ->label('Среднее время реакции на старте (с)')
+                             ->minValue(0)
+                             ->maxValue(2)
+                             ->numeric(),
+                         Forms\Components\TextInput::make('boost')
+                             ->label('Ускорение (м/с², начальная фаза забега)')
+                             ->minValue(0)
+                             ->maxValue(5)
+                             ->numeric(),
+                         Forms\Components\TextInput::make('max_speed')
+                             ->label('Максимальная скорость (м/с)')
+                             ->minValue(0)
+                             ->maxValue(50)
+                             ->numeric(),
+                         Forms\Components\TextInput::make('speed_loss')
+                             ->label('Коэффициент потери скорости (на финальной стадии)')
+                             ->minValue(0)
+                             ->maxValue(1)
+                             ->numeric(),
+                         Forms\Components\TextInput::make('stability_from')
+                             ->label('Стабильность от')
+                             ->minValue(0)
+                             ->maxValue(5)
+                             ->lte('stability_to')
+                             ->numeric(),
+                         Forms\Components\TextInput::make('stability_to')
+                             ->label('Стабильность до')
+                             ->minValue(0)
+                             ->maxValue(5)
+                             ->gte('stability_from')
+                             ->numeric(),
+                    ])
+                    ->label('Характеристики')
+                    ->columns(2),
             ]);
     }
 

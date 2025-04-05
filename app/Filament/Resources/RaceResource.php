@@ -6,12 +6,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RaceResource\Pages;
 use App\Filament\Resources\RaceResource\RelationManagers;
-use App\Models\MemberRace;
 use App\Models\Race;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -54,20 +52,20 @@ class RaceResource extends Resource
                     ->reorderable()
                     ->schema([
                         TextInput::make('place')
-                                 ->label('Место')
-                                 ->disabled(),
-                         Fieldset::make('member')
-                             ->relationship('member')
-                             ->schema([
-                                  TextInput::make('number')
-                                        ->label('Номер участника')
-                                      ->disabled(),
-                                  Forms\Components\ColorPicker::make('color')
-                                        ->label('Цвет')
-                                          ->disabled(),
+                            ->label('Место')
+                            ->disabled(),
+                        Fieldset::make('member')
+                            ->relationship('member')
+                            ->schema([
+                                TextInput::make('number')
+                                    ->label('Номер участника')
+                                    ->disabled(),
+                                Forms\Components\ColorPicker::make('color')
+                                    ->label('Цвет')
+                                    ->disabled(),
                               ])
-                                 ->label('Участник'),
-                     ])
+                            ->label('Участник'),
+                    ])
                     ->orderColumn('place')
                     ->columns(6)
             ])
