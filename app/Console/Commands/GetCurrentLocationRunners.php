@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\DTO\Race\RaceInformationDTO;
+use App\Enums\KeyCache;
+use App\Events\OnlineRace;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class GetCurrentLocationRunners extends Command
 {
@@ -27,6 +31,11 @@ class GetCurrentLocationRunners extends Command
      */
     public function handle(): void
     {
-        // Вне зависимости, где бегуны отдавать их точки
+        $key = KeyCache::CurrentRace->value;
+
+        /** @var ?RaceInformationDTO $currentRace */
+        $currentRace = Cache::get($key);
+
+        OnlineRace::dispatch($currentRace);
     }
 }
