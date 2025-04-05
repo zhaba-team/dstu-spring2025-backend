@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
@@ -10,7 +12,9 @@ use Illuminate\Queue\SerializesModels;
 
 class OnlineRace implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use InteractsWithSockets;
+    use SerializesModels;
+    use Dispatchable;
 
     /**
      * Create a new event instance.
