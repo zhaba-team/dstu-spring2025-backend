@@ -19,6 +19,7 @@
 * php_codesniffer
 * laravel-data
 * filament
+* Laravel reverb + redis
 
 ### Локальная разработка:
 
