@@ -54,7 +54,7 @@ class MemberResource extends Resource
                              ->required(),
                     ])
                      ->columns(4),
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Характеристики')
                     ->schema([
                          Forms\Components\TextInput::make('reaction_time')
                              ->label('Среднее время реакции на старте (с)')
@@ -89,7 +89,6 @@ class MemberResource extends Resource
                              ->gte('stability_from')
                              ->numeric(),
                     ])
-                    ->label('Характеристики')
                     ->columns(2),
             ]);
     }
