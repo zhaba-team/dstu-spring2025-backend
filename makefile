@@ -18,6 +18,9 @@ build-wait:
 up:
 	@echo "Starting containers"
 	@docker compose --env-file .env up -d --remove-orphans
+down:
+	@echo "Stopping containers"
+	@docker compose stop
 build-prod:
 	@echo "Building containers"
 	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --wait --build
