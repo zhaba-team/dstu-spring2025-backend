@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Member;
@@ -10,7 +12,7 @@ class MemberController
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): void
     {
         //
     }
@@ -18,7 +20,7 @@ class MemberController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -26,7 +28,7 @@ class MemberController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         //
     }
@@ -34,7 +36,7 @@ class MemberController
     /**
      * Display the specified resource.
      */
-    public function show(Member $member)
+    public function show(Member $member): void
     {
         //
     }
@@ -42,7 +44,7 @@ class MemberController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Member $member)
+    public function edit(Member $member): void
     {
         //
     }
@@ -50,7 +52,7 @@ class MemberController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, Member $member): void
     {
         //
     }
@@ -58,7 +60,7 @@ class MemberController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Member $member)
+    public function destroy(Member $member): void
     {
         //
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Race;
@@ -10,7 +12,7 @@ class RaceController
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): void
     {
         //
     }
@@ -18,7 +20,7 @@ class RaceController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -26,7 +28,7 @@ class RaceController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         //
     }
@@ -34,7 +36,7 @@ class RaceController
     /**
      * Display the specified resource.
      */
-    public function show(Race $race)
+    public function show(Race $race): void
     {
         //
     }
@@ -42,7 +44,7 @@ class RaceController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Race $race)
+    public function edit(Race $race): void
     {
         //
     }
@@ -50,7 +52,7 @@ class RaceController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Race $race)
+    public function update(Request $request, Race $race): void
     {
         //
     }
@@ -58,7 +60,7 @@ class RaceController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Race $race)
+    public function destroy(Race $race): void
     {
         //
     }

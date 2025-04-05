@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Member extends Model
 {
@@ -20,8 +22,11 @@ class Member extends Model
         'color',
     ];
 
-    public function races(): HasMany
+    /**
+     * @phpstan-ignore-next-line
+     */
+    public function races(): BelongsToMany
     {
-        return $this->hasMany(Race::class);
+        return $this->belongsToMany(Race::class)->withPivot('place');
     }
 }

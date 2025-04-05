@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Member;
 use Illuminate\Database\Seeder;
 
 class MemberSeeder extends Seeder
@@ -12,6 +14,17 @@ class MemberSeeder extends Seeder
      */
     public function run(): void
     {
-        
+        $members = config('members');
+
+        foreach ($members as $member) {
+            Member::query()->firstOrCreate(
+                [
+                    'number' => $member['number'],
+                ],
+                [
+                    'color' => $member['color'],
+                ]
+            );
+        }
     }
 }
