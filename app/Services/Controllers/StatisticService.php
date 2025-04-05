@@ -43,8 +43,8 @@ class StatisticService
                 $statistic[strval($i)] = $won / $numberOfRaces;
             }
 
-            $statistic['topTwo'] = $statistic['1'] + $statistic['2'];
-            $statistic['topThree'] = $statistic['topTwo'] + $statistic['3'];
+            $statistic['topTwo'] = floatval($statistic['1']) + floatval($statistic['2']);
+            $statistic['topThree'] = $statistic['topTwo'] + floatval($statistic['3']);
 
             $statistics[] = $statistic;
         }
