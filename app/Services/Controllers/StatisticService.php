@@ -21,26 +21,30 @@ class StatisticService
 
         $members = Member::all();
 
-        Race::query()
-            ->orderByDesc('id')
+        $latestRaceIds = Race::query()
+            ->latest('id')
             ->limit($numberOfRaces)
-            ->get();
+            ->pluck('id');
 
         $statistics = [];
         foreach ($members as $member) {
             $statistic = [
-                'id' => $member->id,
+                'number' => $member->number,
                 'color' => $member->color,
             ];
 
             for ($i = 1; $i < $placesCount + 1; ++$i) {
                 $won = $member
                     ->races()
+                    ->whereIn('race_id', $latestRaceIds)
                     ->where('place', $i)
                     ->count();
 
                 $statistic[strval($i)] = $won / $numberOfRaces;
             }
+
+            $statistic['topTwo'] = $statistic['1'] + $statistic['2'];
+            $statistic['topThree'] = $statistic['topTwo'] + $statistic['3'];
 
             $statistics[] = $statistic;
         }
