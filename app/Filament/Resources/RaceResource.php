@@ -12,6 +12,11 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\ColorEntry;
+use Filament\Infolists\Components\KeyValueEntry;
+use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -32,7 +37,7 @@ class RaceResource extends Resource
 
     protected static ?string $breadcrumb = 'Забеги';
 
-    protected static ?string $label = 'Забег';
+    protected static ?string $label = 'забега';
 
     static function canCreate(): bool
     {
@@ -42,33 +47,25 @@ class RaceResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                TextInput::make('id')
-                    ->label('№')
-                    ->disabled(),
-                Repeater::make('raceMembers')
-                    ->label('Участники забега')
-                    ->relationship()
-                    ->reorderable()
-                    ->schema([
-                        TextInput::make('place')
-                            ->label('Место')
-                            ->disabled(),
-                        Fieldset::make('member')
-                            ->relationship('member')
-                            ->schema([
-                                TextInput::make('number')
-                                    ->label('Номер участника')
-                                    ->disabled(),
-                                Forms\Components\ColorPicker::make('color')
-                                    ->label('Цвет')
-                                    ->disabled(),
-                              ])
-                            ->label('Участник'),
-                    ])
-                    ->orderColumn('place')
-                    ->columns(6)
-            ])
+            ->schema([]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist->schema([
+                 TextEntry::make('id')
+                     ->label('№'),
+                 RepeatableEntry::make('raceMembers')
+                     ->label('Участники забега')
+                     ->schema([
+                         TextEntry::make('member.number')
+                             ->label('Номер участника'),
+                         ColorEntry::make('member.color')
+                             ->label('Цвет'),
+                         TextEntry::make('place')
+                             ->label('Место'),
+                     ])->columns(3),
+             ])
             ->columns(1);
     }
 
@@ -78,13 +75,13 @@ class RaceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->label('№')
-                    ->sortable()
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -104,7 +101,6 @@ class RaceResource extends Resource
     {
         return [
             'index' => Pages\ListRaces::route('/'),
-            'create' => Pages\CreateRace::route('/create'),
         ];
     }
 }

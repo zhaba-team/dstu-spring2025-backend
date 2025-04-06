@@ -93,24 +93,27 @@ class MemberResource extends Resource
                              ->numeric(),
                     ])
                     ->columns(2),
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Занятые места')
                     ->schema([
                          Repeater::make('memberRaces')
-                             ->label('Занятые места')
+                             ->label('')
                              ->relationship()
                              ->schema([
-                                 TextInput::make('place')
-                                     ->label('Место')
-                                     ->disabled(),
                                  TextInput::make('race.id')
                                      ->label('Забег №')
                                      ->disabled(),
+                                 TextInput::make('place')
+                                     ->label('Место')
+                                     ->disabled(),
                                  Fieldset::make('race')
                                      ->relationship('race')
-                                     ->hidden()
+                                     ->hidden(),
                              ])
-                         ->columns(4),
-                    ])->disabled()
+                             ->columns(2),
+                    ])
+                    ->collapsed()
+                    ->maxWidth('xl')
+                    ->disabled()
             ]);
     }
 
