@@ -16,6 +16,9 @@ class StatisticService
         $numberOfRaces = config('settings.number_of_races');
 
         $lastRaceId = Race::query()->latest()->first()->id ?? $numberOfRaces;
+        if ($actual === null) {
+            $actual = $lastRaceId;
+        }
         if ($actual < $numberOfRaces) {
             $offset = $lastRaceId - $numberOfRaces;
             $actual = $numberOfRaces;
