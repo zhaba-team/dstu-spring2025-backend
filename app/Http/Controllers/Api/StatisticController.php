@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Services\Controllers\StatisticService;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class StatisticController
@@ -14,9 +15,11 @@ class StatisticController
     ) {
     }
 
-    public function getAll(): JsonResponse
+    public function getAll(Request $request): JsonResponse
     {
-        $statistics = $this->statisticService->collect();
+        $actual = $request->integer('actual');
+
+        $statistics = $this->statisticService->collect($actual);
 
         return new JsonResponse($statistics);
     }

@@ -12,19 +12,32 @@ class StatisticService
     /**
      * @return array<string, mixed>
      */
-    public function collect(): array
+    public function collect(?int $actual = null): array
     {
         /** @var integer $numberOfRaces */
         $numberOfRaces = config('settings.number_of_races');
+
+        $lastRaceId = Race::query()->latest()->first()->id ?? $numberOfRaces;
+        if ($actual < $numberOfRaces) {
+            $offset = $lastRaceId - $numberOfRaces;
+            $actual = $numberOfRaces;
+        } elseif ($actual > $lastRaceId) {
+            $offset = 0;
+            $actual = $lastRaceId;
+        } else {
+            $offset = $lastRaceId - $actual;
+        }
 
         /** @var integer[] $latestRaceIds */
         $latestRaceIds = Race::query()
             ->latest('id')
             ->limit($numberOfRaces)
+            ->offset($offset)
             ->pluck('id')
             ->toArray();
 
         return [
+            'actual' => $actual,
             'places_order'         => $this->getPlacesOrder($latestRaceIds),
             'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
             'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
