@@ -7,4 +7,5 @@ namespace App\Enums;
 enum KeyCache: string
 {
     case CurrentRace = 'current_race';
+    case Statistic = 'statistic';
 }

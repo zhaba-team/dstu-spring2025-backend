@@ -4,33 +4,38 @@ declare(strict_types=1);
 
 namespace App\Services\Controllers;
 
+use App\Enums\KeyCache;
 use App\Models\Member;
 use App\Models\Race;
+use Illuminate\Support\Facades\Cache;
 
 class StatisticService
 {
     /**
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function collect(): array
     {
-        /** @var integer $numberOfRaces */
-        $numberOfRaces = config('settings.number_of_races');
+        $key = KeyCache::Statistic->value;
 
-        $statistics = [];
+        /** @var array<string, mixed> */
+        return Cache::remember($key, now()->addMinute(), function (): array {
+            /** @var integer $numberOfRaces */
+            $numberOfRaces = config('settings.number_of_races');
 
-        /** @var integer[] $latestRaceIds */
-        $latestRaceIds = Race::query()
-            ->latest('id')
-            ->limit($numberOfRaces)
-            ->pluck('id')
-            ->toArray();
+            /** @var integer[] $latestRaceIds */
+            $latestRaceIds = Race::query()
+                ->latest('id')
+                ->limit($numberOfRaces)
+                ->pluck('id')
+                ->toArray();
 
-        $statistics['places_order'] = $this->getPlacesOrder($latestRaceIds);
-        $statistics['single_probabilities'] = $this->getSingleProbabilities($latestRaceIds);
-        $statistics['pair_probabilities'] = $this->getPairProbabilities($latestRaceIds);
-
-        return $statistics;
+            return [
+                'places_order'         => $this->getPlacesOrder($latestRaceIds),
+                'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
+                'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
+            ];
+        });
     }
 
     /**
@@ -48,7 +53,7 @@ class StatisticService
         foreach ($members as $member) {
             $statistic = [
                 'number' => $member->number,
-                'color' => $member->color,
+                'color'  => $member->color,
             ];
 
             for ($i = 1; $i < $placesCount + 1; ++$i) {
@@ -79,9 +84,11 @@ class StatisticService
     {
         $races = Race::query()
             ->whereIn('races.id', $latestRaceIds)
-            ->with(['members' => function ($query): void {
-                $query->orderBy('member_race.place');
-            }])
+            ->with([
+                       'members' => function ($query): void {
+                           $query->orderBy('member_race.place');
+                       },
+                   ])
             ->get();
 
         $distribution = [];
@@ -90,16 +97,16 @@ class StatisticService
             foreach ($race->members as $member) {
                 $place = $member->pivot->place;
 
-                if (!isset($distribution[$place])) {
+                if (! isset($distribution[$place])) {
                     $distribution[$place] = [
-                        'place' => $place,
+                        'place'   => $place,
                         'members' => [],
                     ];
                 }
 
                 $distribution[$place]['members'][] = [
                     'number' => $member->number,
-                    'color' => $member->color,
+                    'color'  => $member->color,
                 ];
             }
         }
@@ -121,10 +128,12 @@ class StatisticService
 
         $racesWithWinners = Race::query()
             ->whereIn('id', $latestRaceIds)
-            ->with(['members' => function ($query): void {
-                $query->wherePivotIn('place', [1, 2])
-                ->orderBy('place');
-            }])
+            ->with([
+                       'members' => function ($query): void {
+                           $query->wherePivotIn('place', [1, 2])
+                               ->orderBy('place');
+                       },
+                   ])
             ->get();
 
         $pairs = [];
@@ -144,7 +153,7 @@ class StatisticService
         foreach ($members as $member) {
             $propabilities[$member->id] = [
                 'number' => $member->number,
-                'color' => $member->color,
+                'color'  => $member->color,
             ];
 
             for ($i = 1; $i <= $placesCount; ++$i) {
@@ -157,7 +166,7 @@ class StatisticService
 
                 $formattedCounts = [];
                 foreach ($counts as $number => $count) {
-                    $formattedCounts[(string)$number] = $count;
+                    $formattedCounts[(string) $number] = $count;
                 }
 
                 if ($member->id === $key) {
