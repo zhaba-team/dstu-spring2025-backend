@@ -17,9 +17,9 @@ class StatisticController
 
     public function getAll(Request $request): JsonResponse
     {
-        $actual = $request->integer('actual');
+        $actual = $request->query('actual');
 
-        $statistics = $this->statisticService->collect($actual);
+        $statistics = $this->statisticService->collect($actual ? (int) $actual : null);
 
         return new JsonResponse($statistics);
     }
