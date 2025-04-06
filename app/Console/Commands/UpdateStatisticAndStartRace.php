@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Enums\KeyCache;
+use App\Events\UpdateStatistic;
+use App\Services\Controllers\StatisticService;
 use App\Services\Race\RaceService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -34,6 +36,10 @@ class UpdateStatisticAndStartRace extends Command
      */
     public function handle(): void
     {
+        $updatedStatistic = new StatisticService();
+
+        UpdateStatistic::dispatch($updatedStatistic->collect());
+
         $timeNow = Carbon::now()->format('H:i:s');
 
         $raceService = new RaceService($timeNow);
