@@ -36,6 +36,12 @@ class UpdateStatisticAndStartRace extends Command
      */
     public function handle(): void
     {
+        Cache::forget(KeyCache::Statistic->value);
+
+        $updatedStatistic = new StatisticService();
+
+        UpdateStatistic::dispatch($updatedStatistic->collect());
+
         $timeNow = Carbon::now()->format('H:i:s');
 
         $raceService = new RaceService($timeNow);
@@ -45,9 +51,5 @@ class UpdateStatisticAndStartRace extends Command
         $key = KeyCache::CurrentRace->value;
 
         Cache::put($key, $raceInformation);
-
-        $updatedStatistic = new StatisticService();
-
-        UpdateStatistic::dispatch($updatedStatistic->collect());
     }
 }
