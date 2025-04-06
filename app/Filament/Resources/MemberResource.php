@@ -8,6 +8,9 @@ use App\Filament\Resources\MemberResource\Pages;
 use App\Filament\Resources\MemberResource\RelationManagers;
 use App\Models\Member;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -90,6 +93,24 @@ class MemberResource extends Resource
                              ->numeric(),
                     ])
                     ->columns(2),
+                Forms\Components\Section::make()
+                    ->schema([
+                         Repeater::make('memberRaces')
+                             ->label('Занятые места')
+                             ->relationship()
+                             ->schema([
+                                 TextInput::make('place')
+                                     ->label('Место')
+                                     ->disabled(),
+                                 TextInput::make('race.id')
+                                     ->label('Забег №')
+                                     ->disabled(),
+                                 Fieldset::make('race')
+                                     ->relationship('race')
+                                     ->hidden()
+                             ])
+                         ->columns(4),
+                    ])->disabled()
             ]);
     }
 
