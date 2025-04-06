@@ -9,7 +9,7 @@ use App\Models\Race;
 
 class StatisticService
 {
-    /** @return array<string, mixed> */
+    /** @return mixed[] */
     public function collect(?int $actual = null): array
     {
         /** @var integer $numberOfRaces */
