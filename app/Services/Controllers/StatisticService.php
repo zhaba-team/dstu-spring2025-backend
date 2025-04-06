@@ -171,7 +171,7 @@ class StatisticService
 
                 if ($member->id === $key) {
                     foreach ($formattedCounts as $number => $count) {
-                        $propabilities[$member->id][$number] = $count;
+                        $propabilities[$member->id][$number] = round($count / $placesCount, 2);
                     }
                 }
             }
