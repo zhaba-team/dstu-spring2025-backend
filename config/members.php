@@ -10,8 +10,8 @@ return [
         'boost' => 4.5,
         'max_speed' => 11.2,
         'speed_loss' => 0.18,
-        'stability_from' => 2.5,
-        'stability_to' => 3.5
+        'stability_from' => 0,
+        'stability_to' => 1,
     ],
     [
         'number' => 2,
@@ -20,8 +20,8 @@ return [
         'boost' => 4.5,
         'max_speed' => 11.2,
         'speed_loss' => 0.18,
-        'stability_from' => 2.5,
-        'stability_to' => 3.5
+        'stability_from' => 0,
+        'stability_to' => 1,
     ],
     [
         'number' => 3,
@@ -30,8 +30,8 @@ return [
         'boost' => 4.5,
         'max_speed' => 11.2,
         'speed_loss' => 0.18,
-        'stability_from' => 2.5,
-        'stability_to' => 3.5
+        'stability_from' => 0,
+        'stability_to' => 1,
     ],
     [
         'number' => 4,
@@ -40,8 +40,8 @@ return [
         'boost' => 4.5,
         'max_speed' => 11.2,
         'speed_loss' => 0.18,
-        'stability_from' => 2.5,
-        'stability_to' => 3.5
+        'stability_from' => 0,
+        'stability_to' => 1,
     ],
     [
         'number' => 5,
@@ -50,8 +50,8 @@ return [
         'boost' => 4.5,
         'max_speed' => 11.2,
         'speed_loss' => 0.18,
-        'stability_from' => 2.5,
-        'stability_to' => 3.5
+        'stability_from' => 0,
+        'stability_to' => 1,
     ],
     [
         'number' => 6,
@@ -60,7 +60,7 @@ return [
         'boost' => 4.5,
         'max_speed' => 11.2,
         'speed_loss' => 0.18,
-        'stability_from' => 2.5,
-        'stability_to' => 3.5
+        'stability_from' => 0,
+        'stability_to' => 1,
     ]
 ];
