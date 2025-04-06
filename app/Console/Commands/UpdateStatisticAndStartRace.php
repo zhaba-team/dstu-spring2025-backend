@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\DTO\Race\RaceInformationDTO;
-use App\DTO\Race\RaceMembersDTO;
 use App\Enums\KeyCache;
-use App\Models\Member;
+use App\Services\Race\RaceService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
@@ -36,26 +34,14 @@ class UpdateStatisticAndStartRace extends Command
      */
     public function handle(): void
     {
-        $arrayRaceMembers = [];
+        $timeNow = Carbon::now()->format('H:i:s');
 
-        $members = Member::all();
+        $raceService = new RaceService($timeNow);
 
-        $time = Carbon::now()->format('H:i:s');
-
-        foreach ($members as $member) {
-            $raceTime = random_int(10, 15);
-
-            $arrayRaceMembers[] = new RaceMembersDTO($member->color, $raceTime);
-        }
-
-        $raceInformation = new RaceInformationDTO($time, $arrayRaceMembers);
+        $raceInformation = $raceService->getInformation();
 
         $key = KeyCache::CurrentRace->value;
 
-        $currentRace = Cache::get($key);
-
-        if ($currentRace === null) {
-            Cache::put($key, $raceInformation);
-        }
+        Cache::put($key, $raceInformation);
     }
 }

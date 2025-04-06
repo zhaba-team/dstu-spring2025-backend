@@ -7,6 +7,8 @@ namespace App\Console\Commands;
 use App\DTO\Race\RaceInformationDTO;
 use App\Enums\KeyCache;
 use App\Events\OnlineRace;
+use App\Services\Race\RunnerService;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
@@ -31,10 +33,23 @@ class GetCurrentLocationRunners extends Command
      */
     public function handle(): void
     {
+        $timeNow = Carbon::now()->format('H:i:s');
+
         $key = KeyCache::CurrentRace->value;
 
         /** @var ?RaceInformationDTO $currentRace */
         $currentRace = Cache::get($key);
+
+        foreach ((array) $currentRace?->members as $race) {
+            $runnerService = new RunnerService($race);
+
+            $timestamp1 = strtotime((string) $currentRace?->time);
+            $timestamp2 = strtotime($timeNow);
+
+            $difference = abs($timestamp1 - $timestamp2);
+
+            $race->raceTime = $runnerService->calculateTimeRaceFined($difference);
+        }
 
         OnlineRace::dispatch($currentRace);
     }
