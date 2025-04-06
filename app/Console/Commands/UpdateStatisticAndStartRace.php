@@ -38,9 +38,7 @@ class UpdateStatisticAndStartRace extends Command
     {
         $updatedStatistic = new StatisticService();
 
-        $dataStatistic = $updatedStatistic->collect();
-
-        UpdateStatistic::dispatch($dataStatistic);
+        UpdateStatistic::dispatch($updatedStatistic->collect());
 
         $timeNow = Carbon::now()->format('H:i:s');
 

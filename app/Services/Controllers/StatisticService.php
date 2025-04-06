@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Controllers;
 
-use App\Enums\KeyCache;
 use App\Models\Member;
 use App\Models\Race;
-use Illuminate\Support\Facades\Cache;
 
 class StatisticService
 {
@@ -16,26 +14,21 @@ class StatisticService
      */
     public function collect(): array
     {
-        $key = KeyCache::Statistic->value;
+        /** @var integer $numberOfRaces */
+        $numberOfRaces = config('settings.number_of_races');
 
-        /** @var array<string, mixed> */
-        return Cache::remember($key, now()->addMinute(), function (): array {
-            /** @var integer $numberOfRaces */
-            $numberOfRaces = config('settings.number_of_races');
+        /** @var integer[] $latestRaceIds */
+        $latestRaceIds = Race::query()
+            ->latest('id')
+            ->limit($numberOfRaces)
+            ->pluck('id')
+            ->toArray();
 
-            /** @var integer[] $latestRaceIds */
-            $latestRaceIds = Race::query()
-                ->latest('id')
-                ->limit($numberOfRaces)
-                ->pluck('id')
-                ->toArray();
-
-            return [
-                'places_order'         => $this->getPlacesOrder($latestRaceIds),
-                'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
-                'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
-            ];
-        });
+        return [
+            'places_order'         => $this->getPlacesOrder($latestRaceIds),
+            'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
+            'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
+        ];
     }
 
     /**
