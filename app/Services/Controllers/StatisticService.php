@@ -11,14 +11,11 @@ use Illuminate\Support\Facades\Cache;
 
 class StatisticService
 {
-    /**
-     * @return array<string, mixed>
-     */
     public function collect(?int $actual = null): array
     {
         $key = KeyCache::Statistic->value;
 
-        return Cache::remember($key, now()->addMinute(), function () use($actual): array {
+        return Cache::remember($key, now()->addMinute(), function () use ($actual): array {
             /** @var integer $numberOfRaces */
             $numberOfRaces = config('settings.number_of_races');
 
@@ -42,7 +39,7 @@ class StatisticService
                 ->toArray();
 
             return [
-                'actual' => $actual,
+                'actual'               => $actual,
                 'places_order'         => $this->getPlacesOrder($latestRaceIds),
                 'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
                 'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
