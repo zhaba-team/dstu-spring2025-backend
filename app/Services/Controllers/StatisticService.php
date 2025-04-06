@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Services\Controllers;
 
+use App\Enums\KeyCache;
 use App\Models\Member;
 use App\Models\Race;
+use Illuminate\Support\Facades\Cache;
 
 class StatisticService
 {
@@ -14,34 +16,38 @@ class StatisticService
      */
     public function collect(?int $actual = null): array
     {
-        /** @var integer $numberOfRaces */
-        $numberOfRaces = config('settings.number_of_races');
+        $key = KeyCache::Statistic->value;
 
-        $lastRaceId = Race::query()->latest()->first()->id ?? $numberOfRaces;
-        if ($actual < $numberOfRaces) {
-            $offset = $lastRaceId - $numberOfRaces;
-            $actual = $numberOfRaces;
-        } elseif ($actual > $lastRaceId) {
-            $offset = 0;
-            $actual = $lastRaceId;
-        } else {
-            $offset = $lastRaceId - $actual;
-        }
+        return Cache::remember($key, now()->addMinute(), function () use($actual): array {
+            /** @var integer $numberOfRaces */
+            $numberOfRaces = config('settings.number_of_races');
 
-        /** @var integer[] $latestRaceIds */
-        $latestRaceIds = Race::query()
-            ->latest('id')
-            ->limit($numberOfRaces)
-            ->offset($offset)
-            ->pluck('id')
-            ->toArray();
+            $lastRaceId = Race::query()->latest()->first()->id ?? $numberOfRaces;
+            if ($actual < $numberOfRaces) {
+                $offset = $lastRaceId - $numberOfRaces;
+                $actual = $numberOfRaces;
+            } elseif ($actual > $lastRaceId) {
+                $offset = 0;
+                $actual = $lastRaceId;
+            } else {
+                $offset = $lastRaceId - $actual;
+            }
 
-        return [
-            'actual' => $actual,
-            'places_order'         => $this->getPlacesOrder($latestRaceIds),
-            'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
-            'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
-        ];
+            /** @var integer[] $latestRaceIds */
+            $latestRaceIds = Race::query()
+                ->latest('id')
+                ->limit($numberOfRaces)
+                ->offset($offset)
+                ->pluck('id')
+                ->toArray();
+
+            return [
+                'actual' => $actual,
+                'places_order'         => $this->getPlacesOrder($latestRaceIds),
+                'single_probabilities' => $this->getSingleProbabilities($latestRaceIds),
+                'pair_probabilities'   => $this->getPairProbabilities($latestRaceIds),
+            ];
+        });
     }
 
     /**
