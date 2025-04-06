@@ -39,7 +39,7 @@ class UpdateStatisticAndStartRace extends Command
         $raceService = new RaceService($timeNow);
 
         $raceInformation = $raceService->getInformation();
-        dd($raceInformation);
+
         $key = KeyCache::CurrentRace->value;
 
         Cache::put($key, $raceInformation);

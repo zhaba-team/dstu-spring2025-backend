@@ -9,6 +9,7 @@ use App\DTO\Race\RaceMembersDTO;
 use App\Models\Member;
 use App\Models\Race;
 use Random\RandomException;
+use Random\Randomizer;
 
 readonly class RaceService
 {
@@ -58,7 +59,7 @@ readonly class RaceService
     /**
      * @throws RandomException
      */
-    private function getRiceTime(Member $member)
+    private function getRiceTime(Member $member): float
     {
         $distance = 100;
 
@@ -80,23 +81,23 @@ readonly class RaceService
         /**
          * Коэф. потери скорости
          */
-        $speedLossBase =  $member->speed_loss;
+        $speedLossBase = $member->speed_loss;
 
-        $randomizer = new \Random\Randomizer();
+        $randomizer = new Randomizer();
 
 
         /**
          * Стабильность чювака
          */
-        $stability = $randomizer->getFloat($member->stability_from, $member->stability_to);
+        $stability = $randomizer->getFloat((float) $member->stability_from, (float) $member->stability_to);
 
         // Фаза старта
         $timeReact = $timeReactBase + random_int(0, 5) / 100 * (6 - $stability);
 
         // Фаза разгона
-        $accelerationActual = $accelerationBase * (1 + random_int(-10, 10) / 100 * (1 / $stability));
+        $accelerationActual = $accelerationBase * 1 + random_int(-10, 10) / 100 * 1 / $stability;
 
-        $maxSpeedActual = $maxSpeedBase * (1 + random_int(-5, 5) / 100 * (1 / $stability));
+        $maxSpeedActual = $maxSpeedBase * 1 + random_int(-5, 5) / 100 * 1 / $stability;
 
         $timeAcceleration = $maxSpeedActual / $accelerationActual;
 
@@ -114,7 +115,7 @@ readonly class RaceService
 
         // Фаза потери скорости
 
-        $speedLossActual = $speedLossBase * (1 + random_int(-20, 20) / 100 * (1 / $stability));
+        $speedLossActual = $speedLossBase * 1 + random_int(-20, 20) / 100 * 1 / $stability;
 
         $speedFinal = $maxSpeedActual - $speedLossActual * $timeCruise;
 
