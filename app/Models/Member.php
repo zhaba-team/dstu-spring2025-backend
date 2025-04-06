@@ -25,6 +25,8 @@ class Member extends Model
         'max_speed',
         'speed_loss',
         'number',
+        'stability_from',
+        'stability_to',
         'color',
     ];
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->float('boost')->nullable();
             $table->float('max_speed')->nullable();
             $table->float('speed_loss')->nullable();
-            $table->integer('stability_from')->nullable();
-            $table->integer('stability_to')->nullable();
+            $table->float('stability_from')->nullable();
+            $table->float('stability_to')->nullable();
             $table->integer('number')->unique();
             $table->string('color');
             $table->timestamps();

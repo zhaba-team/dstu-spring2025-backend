@@ -20,10 +20,14 @@ class MemberSeeder extends Seeder
             Member::query()->firstOrCreate(
                 [
                     'number' => $member['number'],
-                ],
-                [
                     'color' => $member['color'],
-                ]
+                    'reaction_time' => $member['reaction_time'],
+                    'boost' => $member['boost'],
+                    'max_speed' => $member['max_speed'],
+                    'speed_loss' => $member['speed_loss'],
+                    'stability_from' => $member['stability_from'],
+                    'stability_to' => $member['stability_to'],
+                ],
             );
         }
     }
