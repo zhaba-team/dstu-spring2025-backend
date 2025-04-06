@@ -59,7 +59,7 @@ readonly class RaceService
     /**
      * @throws RandomException
      */
-    private function getRiceTime(Member $member): float
+    public function getRiceTime(Member $member): float
     {
         $distance = 100;
 

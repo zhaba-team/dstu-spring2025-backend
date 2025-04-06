@@ -6,15 +6,21 @@ namespace Database\Seeders;
 
 use App\Models\Member;
 use App\Models\Race;
+use App\Services\Race\RaceService;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Random\RandomException;
 
 class RaceSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * @throws RandomException
      */
     public function run(): void
     {
+        $timeNow = Carbon::now()->format('H:i:s');
+        $raceService = new RaceService($timeNow);
+
         $numberOfRaces = config('settings.number_of_races');
         $members = Member::all();
 
@@ -22,8 +28,15 @@ class RaceSeeder extends Seeder
             $places = range(1, $members->count());
             $race = Race::query()->create();
 
+            $timings = [];
             foreach ($members as $member) {
-                $place = $places[array_rand($places)];
+                $timings[$member->id] = $raceService->getRiceTime($member);
+            }
+
+            asort($timings); // сортируем по возрастанию
+            foreach ($members as $member) {
+                $keys = array_keys($timings);
+                $place = array_search($member->id, $keys) + 1;
 
                 $race->members()->attach(
                     $member->id,
